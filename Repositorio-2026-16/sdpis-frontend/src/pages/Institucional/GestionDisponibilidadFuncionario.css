@@ -1,0 +1,295 @@
+/* ==========================================================================
+   GESTIÓN DE DISPONIBILIDAD DE FUNCIONARIOS (HU-007) — ESTILOS DEDICADOS
+   Extraído de style.css para aislar los estilos de esta página.
+   Las clases con prefijo disp- son exclusivas de esta pantalla.
+   ========================================================================== */
+
+/* ===== Masthead de estadísticas ===== */
+.disp-masthead {
+    display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 24px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--gris);
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+}
+
+.disp-masthead__stats {
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-left: auto;
+    justify-content: flex-end;
+}
+
+.disp-masthead__stat {
+    text-align: left;
+}
+
+    .disp-masthead__stat .cifra {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--color-navy);
+        line-height: 1;
+    }
+
+    .disp-masthead__stat .etiqueta {
+        font-size: 12px;
+        font-weight: bold;
+        color: #7c8794;
+        margin-top: 4px;
+        letter-spacing: .02em;
+    }
+
+/* Nota informativa (misma linea visual que las demas pantallas institucionales). */
+.disp-nota {
+    flex: 1 1 380px;
+    max-width: 640px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 10px 14px;
+    background: #fff;
+    border: 1px solid #dde2ec;
+    border-left: 3px solid var(--color-gold);
+    border-radius: 6px;
+}
+
+.disp-nota__icono {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #eaeef7;
+    color: #164687;
+}
+
+.disp-nota p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.55;
+    color: #5B6479;
+}
+
+/* ===== Layout master-detail ===== */
+.disp-layout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+/* --- Bloque 1: selector de funcionario arriba del detalle (una sola
+   columna, un solo scroll vertical: el de la pagina) --- */
+.disp-selector {
+    padding: var(--space-4);
+}
+
+    .disp-selector .section-divider-label {
+        margin: 0 0 var(--space-2) 2px;
+    }
+
+.disp-selector-cabecera {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-2) var(--space-4);
+    margin-bottom: var(--space-3);
+}
+
+    .disp-selector-cabecera h3 {
+        margin: 0;
+    }
+
+.disp-selector-fila {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+}
+
+.disp-selector-campo {
+    flex: 1 1 280px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: #164687;
+}
+
+    .disp-selector-campo .sb-boton {
+        min-width: 0;
+        letter-spacing: 0;
+        text-transform: none;
+    }
+
+/* --- Bloque 2: detalle e historial --- */
+.disp-detalle {
+    flex: 1;
+    min-width: 0;
+}
+
+.disp-kpis {
+    margin-bottom: var(--space-5);
+}
+
+.disp-detalle-head {
+    flex-wrap: wrap;
+}
+
+    .disp-detalle-head .section-divider-label {
+        display: block;
+        margin: 0 0 var(--space-2) 2px;
+    }
+
+.disp-detalle-acciones {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.disp-btn-registrar {
+    white-space: nowrap;
+}
+
+.disp-historial-titulo {
+    margin: var(--space-4) 0 var(--space-3);
+}
+
+    .disp-historial-titulo .eyebrow {
+        font-size: 10.5px;
+        letter-spacing: 1.4px;
+        text-transform: uppercase;
+        color: var(--color-ink-muted);
+        font-weight: 700;
+        margin-bottom: 2px;
+    }
+
+    .disp-historial-titulo h4 {
+        font-weight: 700;
+        font-size: 17px;
+        color: var(--color-navy);
+        margin: 0;
+    }
+
+.disp-tabla-wrap {
+    box-shadow: none;
+}
+
+.disp-historial-tabla tbody tr.finalizado {
+    color: var(--color-ink-muted);
+}
+
+.disp-estado-programado {
+    background: #eef2f9;
+    color: var(--color-blue-medium);
+}
+
+.disp-estado-vigente {
+    background: var(--color-amber-soft);
+    color: var(--color-amber);
+    border: 1px solid var(--color-gold);
+}
+
+.disp-estado-finalizado {
+    background: var(--color-gray-soft);
+    color: var(--color-ink-muted);
+}
+
+.disp-bitacora {
+    font-size: 12px;
+    color: var(--color-ink-muted);
+    display: block;
+    margin-top: 2px;
+}
+
+.disp-col-acciones {
+    width: 90px;
+    text-align: right;
+}
+
+.disp-historial-tabla td[data-label="Acciones"] {
+    text-align: right;
+}
+
+.btn-enlace {
+    background: transparent;
+    border: none;
+    color: var(--color-blue-medium);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    transition: background var(--transition), color var(--transition);
+}
+
+    .btn-enlace:hover {
+        background: var(--color-blue-soft);
+        color: var(--color-navy);
+    }
+
+.disp-vacio {
+    border: 1px dashed var(--color-gray);
+    border-radius: var(--radius-sm);
+    padding: var(--space-6) var(--space-4);
+    text-align: center;
+    color: var(--color-ink-muted);
+    font-size: var(--fs-caption);
+}
+
+.disp-eyebrow {
+    font-size: var(--fs-caption);
+    color: var(--color-ink-muted);
+    margin-bottom: 2px;
+}
+
+.disp-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(2, 26, 83, 0.35);
+    z-index: var(--z-panel);
+}
+
+/* Aviso de traslape del panel lateral */
+.aviso-traslape {
+    background: var(--color-amber-soft);
+    border: 1px solid var(--color-gold);
+    border-radius: var(--radius-sm);
+    padding: var(--space-3) var(--space-4);
+    font-size: 13px;
+    color: #5b4a17;
+    margin-top: var(--space-3);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+    .disp-detalle-card {
+        width: 100%;
+    }
+
+    .disp-detalle-acciones {
+        margin-left: 0;
+    }
+
+    .disp-kpis {
+        margin-bottom: var(--space-4);
+    }
+}
+
+/* Corrección de tipografía para títulos */
+.disp-selector h3,
+.disp-detalle h3,
+.panel-lateral-header h2 {
+    font-family: var(--font-body);
+}

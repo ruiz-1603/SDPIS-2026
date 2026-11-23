@@ -1,0 +1,1567 @@
+/* ==========================================================================
+   HU-015 — Roles y permisos (vista de jefe de área y de superusuario)
+   Estándares de diseño:
+   D04 primarios: dorado #CFAC65, azul oscuro #021A53, azul #002E7A.
+   D05 secundarios: gris #C1C5C8, azul #164687, blanco #FFFFFF.
+   D06 dorado solo para destacar (acción principal, filo de tablas/modales,
+       pestaña activa); nunca como color predominante.
+   D07 azul oscuro para títulos y elementos de alta jerarquía.
+   D08 tipografía institucional (--font-heading / --font-body); cuerpo 14–16 px.
+   Misma estructura visual que Asignaciones/Encargado (masthead, toolbar,
+   tabla con filo dorado, modal con borde dorado superior).
+   ========================================================================== */
+
+.page-gestion-usuarios {
+    --dorado: #CFAC65;
+    --dorado-suave: #F6EEDC;
+    --azul-oscuro: #021A53;
+    --azul: #002E7A;
+    --gris: #C1C5C8;
+    --gris-suave: #EEF0F2;
+    --azul-medio: #164687;
+    --azul-suave: #EEF2F9;
+    --blanco: #FFFFFF;
+    --papel: #F7F6F3;
+    --texto-tenue: #5B6479;
+    --peligro: #A13246;
+    --peligro-suave: #F4E2E5;
+    --ok: #1E7A4C;
+    --ok-suave: #E3F2E9;
+    --ambar: #8A6A1F;
+    --ambar-suave: #FBEED9;
+    color: var(--azul-oscuro);
+    font-family: var(--font-body, 'Inter', Arial, sans-serif);
+}
+
+/* ---------- Encabezado (masthead) ----------
+   Igual que Disponibilidad: el titulo vive en la miga de pan; aqui solo
+   cifras grandes (azul oscuro, D07) y una descripcion a la derecha. */
+.gu-pagina .gu-masthead {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px 48px;
+    margin-bottom: 28px;
+}
+
+.gu-pagina .gu-masthead__stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 10px 28px;
+    margin: 0 0 0 auto;
+    padding-bottom: 14px;
+}
+
+.gu-pagina .gu-stat {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 6px;
+}
+
+.gu-pagina .gu-stat dd {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--azul-oscuro);
+    line-height: 1;
+}
+
+.gu-pagina .gu-stat dt {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--texto-tenue);
+}
+
+.gu-pagina .gu-stat dt {
+    position: relative;
+}
+
+/* Nota bajo el titulo: no empuja la cifra, asi todos los indicadores quedan alineados. */
+.gu-pagina .gu-stat__detalle {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 2px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--azul-medio);
+    white-space: nowrap;
+}
+
+/* "Por asignar": el dorado solo como acento, no como cifra (D06). */
+.gu-pagina .gu-stat--destacado dd {
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--dorado);
+    align-self: flex-start;
+}
+
+/* Columna izquierda del encabezado: nota principal y, debajo, la nota de la pestana. */
+.gu-pagina .gu-masthead__izquierda {
+    flex: 1 1 380px;
+    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.gu-pagina .gu-masthead__izquierda .gu-nota {
+    flex: none;
+}
+
+/* Nota informativa (mismo estilo que la de Plazos de atencion). */
+.gu-pagina .gu-nota-info {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 10px 14px;
+    background: #fff;
+    border: 1px solid #dde2ec;
+    border-left: 3px solid var(--dorado);
+    border-radius: 6px;
+}
+
+.gu-pagina .gu-nota-info__icono {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #eaeef7;
+    color: #164687;
+}
+
+.gu-pagina .gu-nota-info__cuerpo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.gu-pagina .gu-nota-info__cuerpo p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--texto-tenue);
+}
+
+/* ---------- Pestañas (pastillas) ---------- */
+.gu-pagina .gu-pestanas {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    padding: 4px 2px 8px;
+    /* Desplazamiento horizontal solo en pantallas angostas, sin barra visible. */
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+}
+
+.gu-pagina .gu-pestanas::-webkit-scrollbar {
+    display: none;
+}
+
+.gu-pagina .gu-pestana {
+    background: transparent;
+    border: 1.5px solid transparent;
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-family: inherit;
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--texto-tenue);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color .2s ease, background-color .2s ease, border-color .2s ease;
+}
+
+.gu-pagina .gu-pestana:hover {
+    color: var(--azul-oscuro);
+    background: #fff;
+    border-color: var(--gris);
+}
+
+.gu-pagina .gu-pestana--activa,
+.gu-pagina .gu-pestana--activa:hover {
+    color: var(--azul-oscuro);
+    background: #fff;
+    border-color: var(--dorado);
+    box-shadow: 0 1px 3px rgba(2, 26, 83, 0.10);
+}
+
+.gu-pagina .gu-pestana:focus {
+    outline: none;
+}
+
+.gu-pagina .gu-pestana:focus-visible {
+    box-shadow: 0 0 0 3px rgba(22, 70, 135, .25);
+}
+
+/* ---------- Toolbar y filtros ---------- */
+.page-gestion-usuarios .gu-toolbar {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 16px 20px;
+    margin-bottom: 14px;
+}
+
+.page-gestion-usuarios .gu-filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.page-gestion-usuarios .gu-filtro {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.page-gestion-usuarios .gu-filtro__etiqueta {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    color: var(--azul-medio);
+}
+
+.page-gestion-usuarios .gu-select,
+.page-gestion-usuarios .gu-input {
+    font-family: inherit;
+    font-size: 14px;
+    padding: 9px 12px;
+    border: 1px solid var(--gris);
+    border-radius: 4px;
+    background: var(--blanco);
+    color: var(--azul-oscuro);
+    max-width: 100%;
+}
+
+.page-gestion-usuarios .gu-select {
+    min-width: 170px;
+    max-width: 300px;
+}
+
+.page-gestion-usuarios .gu-select:focus,
+.page-gestion-usuarios .gu-input:focus {
+    outline: none;
+    border-color: var(--azul-medio);
+    box-shadow: 0 0 0 3px rgba(22, 70, 135, .15);
+}
+
+.page-gestion-usuarios .gu-buscar {
+    position: relative;
+    flex: 1 1 240px;
+    max-width: 360px;
+    margin-left: auto;
+    border-bottom: 1px solid var(--gris);
+}
+
+.page-gestion-usuarios .gu-buscar input {
+    width: 100%;
+    font-family: inherit;
+    font-style: italic;
+    font-size: 14.5px;
+    padding: 8px 8px 8px 36px;
+    border: none;
+    background: transparent;
+    color: var(--azul-oscuro);
+}
+
+.page-gestion-usuarios .gu-buscar input:focus {
+    outline: none;
+}
+
+.page-gestion-usuarios .gu-buscar:focus-within {
+    border-bottom-color: var(--azul);
+}
+
+.page-gestion-usuarios .gu-buscar svg {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #8C95A3;
+}
+
+/* Nota informativa breve: misma linea visual que .gu-nota-info (tarjeta
+   blanca, acento dorado e icono "i" dibujado con ::before). */
+.page-gestion-usuarios .gu-nota {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    flex: 1 1 260px;
+    padding: 8px 14px 8px 10px;
+    background: #fff;
+    border: 1px solid #dde2ec;
+    border-left: 3px solid var(--dorado);
+    border-radius: 6px;
+    font-size: 12.5px;
+    color: var(--texto-tenue);
+    line-height: 1.5;
+}
+
+.page-gestion-usuarios .gu-nota::before {
+    content: 'i';
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #eaeef7;
+    color: #164687;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: Georgia, serif;
+    font-style: italic;
+}
+
+/* Conteo de resultados: etiqueta discreta en vez de texto cursivo suelto. */
+.page-gestion-usuarios .gu-resultado {
+    display: inline-block;
+    margin: 0 0 10px;
+    padding: 3px 12px;
+    border-radius: 999px;
+    background: #fff;
+    border: 1px solid #dde2ec;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--azul-medio);
+}
+
+.page-gestion-usuarios .gu-cargando,
+.gu-cargando-vista {
+    font-style: italic;
+    color: var(--texto-tenue, #5B6479);
+    padding: 24px 2px;
+}
+
+/* ---------- Botones ---------- */
+.page-gestion-usuarios .gu-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 18px;
+    border-radius: 4px;
+    border: 1.5px solid transparent;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.page-gestion-usuarios .gu-btn:focus-visible {
+    outline: 2px solid var(--azul-medio);
+    outline-offset: 2px;
+}
+
+.page-gestion-usuarios .gu-btn:disabled {
+    background: var(--gris-suave);
+    border-color: var(--gris-suave);
+    color: #7C8794;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Acción principal: dorado (D06) con texto azul oscuro (contraste D01). */
+.page-gestion-usuarios .gu-btn--primario {
+    background: var(--dorado);
+    color: var(--azul-oscuro);
+}
+
+.page-gestion-usuarios .gu-btn--primario:hover:not(:disabled) {
+    box-shadow: 0 2px 10px rgba(2, 26, 83, .15);
+}
+
+.page-gestion-usuarios .gu-btn--secundario {
+    background: var(--blanco);
+    border-color: var(--gris);
+    color: var(--azul-oscuro);
+}
+
+.page-gestion-usuarios .gu-btn--secundario:hover:not(:disabled) {
+    border-color: var(--azul-medio);
+    color: var(--azul-medio);
+}
+
+.page-gestion-usuarios .gu-btn--contorno {
+    background: var(--blanco);
+    border-color: var(--gris);
+    color: var(--azul-medio);
+}
+
+.page-gestion-usuarios .gu-btn--contorno:hover:not(:disabled) {
+    background: var(--azul-suave);
+    border-color: var(--azul-medio);
+}
+
+.page-gestion-usuarios .gu-btn--peligro {
+    background: var(--peligro);
+    color: var(--blanco);
+}
+
+.page-gestion-usuarios .gu-btn--peligro-contorno {
+    background: var(--blanco);
+    border-color: var(--peligro);
+    color: var(--peligro);
+}
+
+.page-gestion-usuarios .gu-btn--peligro-contorno:hover:not(:disabled) {
+    background: var(--peligro-suave);
+}
+
+.page-gestion-usuarios .gu-btn--chico {
+    padding: 6px 12px;
+    font-size: 12.5px;
+}
+
+.page-gestion-usuarios .gu-btn-enlace {
+    background: none;
+    border: none;
+    padding: 4px 2px;
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--azul-medio);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* ---------- Tablas ---------- */
+.page-gestion-usuarios .gu-tabla-wrap {
+    background: var(--blanco);
+    border-top: 3px solid var(--dorado);
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(2, 26, 83, .08);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.page-gestion-usuarios .gu-tabla-wrap--plana {
+    box-shadow: none;
+    border: 1px solid #E1E4E8;
+    border-top: 3px solid var(--dorado);
+}
+
+.page-gestion-usuarios .gu-tabla {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.page-gestion-usuarios .gu-tabla thead th {
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    color: var(--azul-medio);
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--gris);
+    white-space: nowrap;
+}
+
+.page-gestion-usuarios .gu-tabla tbody td {
+    padding: 14px 16px;
+    font-size: 14.5px;
+    border-bottom: 1px solid #E9E7E1;
+    vertical-align: middle;
+    color: var(--azul-oscuro);
+}
+
+.page-gestion-usuarios .gu-tabla tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.page-gestion-usuarios .gu-tabla tbody tr:hover {
+    background: #FCFBF9;
+}
+
+.page-gestion-usuarios .gu-fila-inactiva td {
+    color: var(--texto-tenue);
+}
+
+.page-gestion-usuarios .gu-fila-inactiva .gu-persona__avatar {
+    background: var(--gris-suave);
+    color: #7C8794;
+}
+
+.page-gestion-usuarios .gu-tabla--historial td {
+    font-size: 14px;
+    vertical-align: top;
+}
+
+.page-gestion-usuarios .gu-tabla th.gu-col-acciones,
+.page-gestion-usuarios .gu-tabla td.gu-col-acciones {
+    width: 1%;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.page-gestion-usuarios .gu-acciones {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 6px;
+}
+
+.page-gestion-usuarios .gu-celda-fuerte {
+    font-weight: 700;
+}
+
+.page-gestion-usuarios .gu-celda-tenue {
+    font-size: 13px;
+    color: var(--texto-tenue);
+}
+
+.page-gestion-usuarios .gu-bloque {
+    display: block;
+}
+
+.page-gestion-usuarios .gu-nowrap {
+    white-space: nowrap;
+}
+
+.page-gestion-usuarios .gu-vacio {
+    padding: 28px 16px;
+    text-align: center;
+    font-style: italic;
+    color: var(--texto-tenue);
+}
+
+.page-gestion-usuarios .gu-persona {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.page-gestion-usuarios .gu-persona__avatar {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--azul-suave);
+    color: var(--azul);
+    font-weight: 700;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-gestion-usuarios .gu-area {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--azul);
+}
+
+.page-gestion-usuarios .gu-area::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--azul-medio);
+}
+
+/* ---------- Badges: rol, estado, chips, categoría ---------- */
+.page-gestion-usuarios .gu-rol {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.page-gestion-usuarios .gu-rol--superusuario {
+    background: var(--azul-oscuro);
+    color: var(--blanco);
+}
+
+.page-gestion-usuarios .gu-rol--jefe_area {
+    background: var(--dorado-suave);
+    color: var(--azul-oscuro);
+    border: 1px solid var(--dorado);
+}
+
+.page-gestion-usuarios .gu-rol--validador {
+    background: var(--azul-suave);
+    color: var(--azul-medio);
+}
+
+.page-gestion-usuarios .gu-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 6px;
+}
+
+.page-gestion-usuarios .gu-chip {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11.5px;
+    font-weight: 700;
+    background: var(--gris-suave);
+    color: var(--azul-medio);
+    white-space: nowrap;
+}
+
+.page-gestion-usuarios .gu-chip--dorado {
+    background: var(--dorado-suave);
+    color: var(--ambar);
+}
+
+.page-gestion-usuarios .gu-chip--navy {
+    background: var(--azul-oscuro);
+    color: var(--blanco);
+    margin-left: 6px;
+}
+
+.page-gestion-usuarios .gu-chip--tenue {
+    background: transparent;
+    border: 1px solid var(--gris);
+    color: var(--texto-tenue);
+    margin-left: 6px;
+}
+
+.page-gestion-usuarios .gu-chip--fijo {
+    background: var(--papel);
+    border: 1px dashed var(--gris);
+    color: var(--texto-tenue);
+}
+
+.page-gestion-usuarios .gu-estado {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.page-gestion-usuarios .gu-estado::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+}
+
+.page-gestion-usuarios .gu-estado--activo {
+    color: var(--ok);
+}
+
+.page-gestion-usuarios .gu-estado--activo::before {
+    background: var(--ok);
+}
+
+.page-gestion-usuarios .gu-estado--inactivo {
+    color: #7C8794;
+}
+
+.page-gestion-usuarios .gu-estado--inactivo::before {
+    background: var(--gris);
+}
+
+.page-gestion-usuarios .gu-carga {
+    font-size: 13.5px;
+    color: var(--texto-tenue);
+    white-space: nowrap;
+}
+
+.page-gestion-usuarios .gu-carga strong {
+    font-size: 15px;
+    color: var(--azul-oscuro);
+}
+
+.page-gestion-usuarios .gu-carga--pendiente strong {
+    color: var(--ambar);
+}
+
+.page-gestion-usuarios .gu-estado-denuncia {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    background: var(--azul-suave);
+    color: var(--azul-medio);
+    text-transform: capitalize;
+}
+
+.page-gestion-usuarios .gu-categoria {
+    display: inline-block;
+    padding: 3px 9px;
+    border-radius: 4px;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: .03em;
+    white-space: nowrap;
+    background: var(--gris-suave);
+    color: var(--azul-medio);
+}
+
+.page-gestion-usuarios .gu-categoria--permisos {
+    background: var(--dorado-suave);
+    color: var(--ambar);
+}
+
+.page-gestion-usuarios .gu-categoria--funcionarios {
+    background: var(--azul-suave);
+    color: var(--azul);
+}
+
+.page-gestion-usuarios .gu-categoria--cupos {
+    background: var(--azul-oscuro);
+    color: var(--blanco);
+}
+
+.page-gestion-usuarios .gu-categoria--consulta,
+.page-gestion-usuarios .gu-categoria--sesion {
+    background: var(--gris-suave);
+    color: var(--texto-tenue);
+}
+
+.page-gestion-usuarios .gu-cambio {
+    display: block;
+    margin-top: 4px;
+    font-size: 12.5px;
+    color: var(--texto-tenue);
+    word-break: break-word;
+}
+
+.page-gestion-usuarios .gu-cambio__antes {
+    text-decoration: line-through;
+}
+
+.page-gestion-usuarios .gu-cambio__despues {
+    color: var(--azul-oscuro);
+    font-weight: 700;
+}
+
+/* Filtro con buscador (SelectorBuscable): mismo ancho que los select. */
+.page-gestion-usuarios .gu-filtro--buscable .sb-boton {
+    width: 260px;
+    max-width: 100%;
+}
+
+@media (max-width: 600px) {
+    .page-gestion-usuarios .gu-filtro--buscable .sb-boton {
+        width: 100%;
+    }
+}
+/* ---------- Historial administrativo ---------- */
+.page-gestion-usuarios .gu-select--fecha {
+    min-width: 150px;
+}
+
+.page-gestion-usuarios .gu-historial-opciones {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    margin: -2px 0 12px;
+}
+
+.page-gestion-usuarios .gu-historial-opciones .gu-nota {
+    flex: 0 1 auto;
+    margin-left: auto;
+}
+
+.page-gestion-usuarios .gu-casilla {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13.5px;
+    color: var(--azul-oscuro);
+    cursor: pointer;
+}
+
+.page-gestion-usuarios .gu-casilla input {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--azul);
+}
+
+/* Separador de dia: azul oscuro suave con filo dorado (D06/D07). */
+.page-gestion-usuarios .gu-tabla .gu-dia th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding: 10px 16px;
+    background: var(--azul-suave);
+    border-top: 1px solid var(--gris);
+    border-bottom: 1px solid var(--gris);
+    box-shadow: inset 3px 0 0 var(--dorado);
+    text-align: left;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.page-gestion-usuarios .gu-tabla tbody:first-of-type .gu-dia th {
+    border-top: none;
+}
+
+.page-gestion-usuarios .gu-dia__fecha {
+    font-family: inherit;
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--azul-oscuro);
+}
+
+.page-gestion-usuarios .gu-dia__conteo {
+    margin-left: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--texto-tenue);
+}
+
+.page-gestion-usuarios .gu-col-hora {
+    width: 90px;
+}
+
+.page-gestion-usuarios .gu-evento__detalle {
+    margin-top: 6px;
+    line-height: 1.45;
+}
+
+.page-gestion-usuarios .gu-evento__tecnico {
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--texto-tenue);
+}
+
+.page-gestion-usuarios .gu-cambios {
+    list-style: none;
+    margin: 6px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 13px;
+    color: var(--texto-tenue);
+}
+
+.page-gestion-usuarios .gu-cambios__campo {
+    font-weight: 700;
+    color: var(--azul-medio);
+}
+
+.page-gestion-usuarios .gu-categoria + .gu-categoria {
+    margin-left: 6px;
+}
+
+.page-gestion-usuarios .gu-categoria--alerta {
+    background: var(--peligro-suave);
+    color: var(--peligro);
+}
+
+.page-gestion-usuarios .gu-evento--alerta td:first-child {
+    box-shadow: inset 3px 0 0 var(--peligro);
+}
+
+/* Ex superusuario: azul oscuro con texto dorado claro (D06/D07). */
+.page-gestion-usuarios .gu-chip--renuncia {
+    background: var(--azul-oscuro);
+    color: var(--dorado-suave);
+}
+
+.page-gestion-usuarios .gu-bloque-chip {
+    display: table;
+    margin-top: 6px;
+}
+
+.page-gestion-usuarios .gu-texto-ayuda--chico {
+    margin: 0;
+    font-size: 13px;
+}
+
+/* ---------- Ayuda ---------- */
+.page-gestion-usuarios .gu-ayuda {
+    max-width: 920px;
+}
+
+.page-gestion-usuarios .gu-ayuda__intro {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    background: var(--blanco);
+    border-top: 3px solid var(--dorado);
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(2, 26, 83, .08);
+}
+
+.page-gestion-usuarios .gu-ayuda__icono {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--azul-oscuro);
+    color: var(--dorado);
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-gestion-usuarios .gu-ayuda__intro h3 {
+    margin: 0 0 6px;
+    font-family: inherit;
+    font-size: 19px;
+    color: var(--azul-oscuro);
+}
+
+.page-gestion-usuarios .gu-ayuda__intro p {
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--texto-tenue);
+}
+
+.page-gestion-usuarios .gu-ayuda__seccion {
+    margin-bottom: 10px;
+    background: var(--blanco);
+    border: 1px solid #E1E4E8;
+    border-radius: 8px;
+}
+
+.page-gestion-usuarios .gu-ayuda__seccion[open] {
+    box-shadow: inset 3px 0 0 var(--dorado);
+}
+
+.page-gestion-usuarios .gu-ayuda__seccion summary {
+    padding: 14px 20px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--azul-oscuro);
+    cursor: pointer;
+    list-style-position: inside;
+}
+
+.page-gestion-usuarios .gu-ayuda__seccion summary:focus-visible {
+    outline: 2px solid var(--azul-medio);
+    outline-offset: -2px;
+}
+
+.page-gestion-usuarios .gu-ayuda__contenido {
+    padding: 0 20px 16px 24px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--azul-oscuro);
+}
+
+.page-gestion-usuarios .gu-ayuda__contenido p {
+    margin: 0 0 10px;
+}
+
+.page-gestion-usuarios .gu-ayuda__contenido ul,
+.page-gestion-usuarios .gu-ayuda__contenido ol {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.page-gestion-usuarios .gu-ayuda__contenido li + li {
+    margin-top: 6px;
+}
+
+.page-gestion-usuarios .gu-ayuda__contenido h4 {
+    margin: 12px 0 8px;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    color: var(--azul-medio);
+}
+
+.page-gestion-usuarios .gu-ayuda__lista {
+    margin: 0;
+}
+
+.page-gestion-usuarios .gu-ayuda__lista dt {
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.page-gestion-usuarios .gu-ayuda__lista dt:first-child {
+    margin-top: 0;
+}
+
+.page-gestion-usuarios .gu-ayuda__lista dd {
+    margin: 2px 0 0;
+    color: var(--texto-tenue);
+}
+
+.page-gestion-usuarios .gu-ayuda__contenido .gu-ayuda__chips {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.page-gestion-usuarios .gu-ayuda__chips li {
+    margin: 0;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 12.5px;
+    font-weight: 700;
+    background: var(--dorado-suave);
+    color: var(--azul-oscuro);
+}
+
+.page-gestion-usuarios .gu-ayuda__contenido .gu-ayuda__chips li + li {
+    margin-top: 0;
+}
+
+.page-gestion-usuarios .gu-ayuda__chips--navy li {
+    background: var(--azul-oscuro);
+    color: var(--blanco);
+}
+
+/* ---------- Cupo de jefes ---------- */
+.page-gestion-usuarios .gu-cupo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 90px;
+}
+
+.page-gestion-usuarios .gu-cupo__texto {
+    font-weight: 700;
+}
+
+.page-gestion-usuarios .gu-cupo__texto--lleno {
+    color: var(--ambar);
+}
+
+.page-gestion-usuarios .gu-cupo__barra {
+    display: block;
+    height: 5px;
+    border-radius: 999px;
+    background: var(--gris-suave);
+    overflow: hidden;
+}
+
+.page-gestion-usuarios .gu-cupo__barra span {
+    display: block;
+    height: 100%;
+    background: var(--azul-medio);
+}
+
+/* ---------- Paginación ---------- */
+.page-gestion-usuarios .gu-paginacion {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 14px;
+    margin-top: 14px;
+    font-size: 13.5px;
+    color: var(--texto-tenue);
+}
+
+/* ---------- Aviso flotante ---------- */
+.gu-pagina .gu-toast {
+    position: sticky;
+    top: 12px;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    background: var(--azul-oscuro);
+    color: var(--blanco);
+    border-left: 4px solid var(--dorado);
+    border-radius: 6px;
+    box-shadow: 0 6px 18px rgba(2, 26, 83, .2);
+    font-size: 14px;
+}
+
+.gu-pagina .gu-toast button {
+    background: none;
+    border: none;
+    color: var(--blanco);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* ---------- Alertas ---------- */
+.page-gestion-usuarios .gu-alerta {
+    margin: 10px 0;
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.45;
+    border-left: 4px solid;
+}
+
+.page-gestion-usuarios .gu-alerta--error {
+    background: var(--peligro-suave);
+    border-color: var(--peligro);
+    color: var(--peligro);
+}
+
+.page-gestion-usuarios .gu-alerta--aviso {
+    background: var(--ambar-suave);
+    border-color: var(--dorado);
+    color: #5E4812;
+}
+
+.page-gestion-usuarios .gu-alerta--ok {
+    background: var(--ok-suave);
+    border-color: var(--ok);
+    color: var(--ok);
+}
+
+/* ---------- Modal de accion critica (variante peligro) ---------- */
+.gu-modal-raiz .gu-modal--peligro {
+    border-top: 6px solid var(--peligro);
+    box-shadow: 0 16px 40px rgba(122, 28, 44, .35);
+}
+
+.gu-modal-raiz .gu-modal--peligro .gu-modal__cabecera {
+    background: var(--peligro-suave);
+    margin-bottom: 12px;
+}
+
+.gu-modal-raiz .gu-modal--peligro .gu-modal__cabecera h3 {
+    color: var(--peligro);
+}
+
+.gu-modal-raiz .gu-advertencia {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin: 0 0 14px;
+    padding: 14px 16px;
+    background: var(--peligro-suave);
+    border: 1px solid var(--peligro);
+    border-left: 6px solid var(--peligro);
+    border-radius: 4px;
+    color: var(--peligro);
+    font-size: 14px;
+    line-height: 1.45;
+}
+
+.gu-modal-raiz .gu-advertencia p { margin: 4px 0 0; color: var(--texto, inherit); }
+
+.gu-modal-raiz .gu-advertencia__icono {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--peligro);
+    color: var(--blanco);
+    font-weight: 700;
+}
+
+.gu-modal-raiz .gu-input--confirmacion {
+    font-weight: 700;
+    letter-spacing: .12em;
+    border-color: var(--peligro);
+}
+
+.gu-modal-raiz .gu-input--confirmacion:focus {
+    outline: 2px solid var(--peligro);
+}
+
+/* ---------- Modales ---------- */
+.gu-modal-raiz .gu-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-modal, 300);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: rgba(2, 26, 83, .5);
+}
+
+.gu-modal-raiz .gu-modal {
+    width: 100%;
+    max-height: calc(100vh - 32px);
+    display: flex;
+    flex-direction: column;
+    background: var(--blanco);
+    border-top: 4px solid var(--dorado);
+    border-radius: 6px;
+    box-shadow: 0 12px 32px rgba(2, 26, 83, .22);
+}
+
+.gu-modal-raiz .gu-modal--sm { max-width: 420px; }
+.gu-modal-raiz .gu-modal--md { max-width: 560px; }
+.gu-modal-raiz .gu-modal--lg { max-width: 760px; }
+
+.gu-modal-raiz .gu-modal__cabecera {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 24px 28px 12px;
+}
+
+.gu-modal-raiz .gu-modal__cabecera h3 {
+    margin: 0;
+    font-family: inherit;
+    font-size: 20px;
+    color: var(--azul-oscuro);
+    line-height: 1.3;
+}
+
+.gu-modal-raiz .gu-modal__subtitulo {
+    margin: 4px 0 0;
+    font-size: 13.5px;
+    color: var(--texto-tenue);
+}
+
+.gu-modal-raiz .gu-modal__cerrar {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: var(--texto-tenue);
+    cursor: pointer;
+    padding: 4px;
+}
+
+.gu-modal-raiz .gu-modal__cerrar:hover:not(:disabled) {
+    color: var(--azul-oscuro);
+}
+
+.gu-modal-raiz .gu-modal__cuerpo {
+    padding: 4px 28px 16px;
+    overflow-y: auto;
+}
+
+.gu-modal-raiz .gu-modal__pie {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 14px 28px 22px;
+    border-top: 1px solid #E9E7E1;
+}
+
+.page-gestion-usuarios .gu-texto-ayuda {
+    margin: 0 0 12px;
+    font-size: 14px;
+    color: var(--texto-tenue);
+    line-height: 1.5;
+}
+
+/* ---------- Formularios ---------- */
+.page-gestion-usuarios .gu-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.page-gestion-usuarios .gu-formulario__fila {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+}
+
+.page-gestion-usuarios .gu-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.page-gestion-usuarios .gu-campo__etiqueta {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--azul-medio);
+}
+
+.page-gestion-usuarios .gu-campo__ayuda {
+    font-size: 12.5px;
+    color: var(--texto-tenue);
+}
+
+.page-gestion-usuarios .gu-campo .gu-input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.page-gestion-usuarios .gu-input--fijo {
+    background: var(--papel);
+    color: var(--azul-oscuro);
+    font-weight: 700;
+}
+
+.page-gestion-usuarios .gu-input--numero {
+    max-width: 140px;
+}
+
+.page-gestion-usuarios .gu-obligatorio {
+    color: var(--peligro);
+}
+
+.page-gestion-usuarios .gu-clave {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.page-gestion-usuarios .gu-interruptor {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 14px;
+    background: var(--papel);
+    border-radius: 4px;
+}
+
+.page-gestion-usuarios .gu-interruptor input {
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    accent-color: var(--azul);
+}
+
+.page-gestion-usuarios .gu-interruptor label {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.page-gestion-usuarios .gu-interruptor span {
+    font-size: 13px;
+    color: var(--texto-tenue);
+}
+
+/* ---------- Permisos específicos ---------- */
+.page-gestion-usuarios .gu-permisos-grupo {
+    margin-top: 16px;
+}
+
+.page-gestion-usuarios .gu-permisos-grupo h4 {
+    margin: 0 0 8px;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    color: var(--azul-medio);
+}
+
+.page-gestion-usuarios .gu-permisos-lista {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #E1E4E8;
+    border-radius: 6px;
+}
+
+.page-gestion-usuarios .gu-permiso {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 14px;
+    border-bottom: 1px solid #ECEEF1;
+}
+
+.page-gestion-usuarios .gu-permiso:last-child {
+    border-bottom: none;
+}
+
+.page-gestion-usuarios .gu-permiso--activo {
+    background: #FBF7EE;
+    box-shadow: inset 3px 0 0 var(--dorado);
+}
+
+.page-gestion-usuarios .gu-permiso__info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.page-gestion-usuarios .gu-permiso__nombre {
+    font-weight: 700;
+    font-size: 14.5px;
+}
+
+/* Areas de trabajo (area base + adicionales) */
+.page-gestion-usuarios .gu-areas-trabajo {
+    list-style: none;
+    margin: 0 0 16px;
+    padding: 0;
+    border: 1px solid #E1E4E8;
+    border-radius: 6px;
+}
+
+.page-gestion-usuarios .gu-area-fila {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 14px;
+    border-bottom: 1px solid #ECEEF1;
+}
+
+.page-gestion-usuarios .gu-area-fila:last-child {
+    border-bottom: none;
+}
+
+.page-gestion-usuarios .gu-area-fila--adicional {
+    background: #FBF7EE;
+    box-shadow: inset 3px 0 0 var(--dorado);
+}
+
+.page-gestion-usuarios .gu-area-fila__nombre {
+    font-weight: 700;
+    font-size: 14.5px;
+}
+
+.page-gestion-usuarios .gu-area-agregar__fila {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 6px;
+}
+
+.page-gestion-usuarios .gu-area-agregar__selector {
+    flex: 1;
+    min-width: 0;
+}
+
+.page-gestion-usuarios .gu-chip--area {
+    background: var(--azul-suave);
+    color: var(--azul-medio);
+    white-space: normal;
+}
+
+.page-gestion-usuarios .gu-permiso__descripcion {
+    font-size: 13px;
+    color: var(--texto-tenue);
+}
+
+/* ---------- Acceso restringido ---------- */
+.page-gestion-usuarios .gu-restringido {
+    max-width: 520px;
+    margin: 48px auto;
+    padding: 32px;
+    text-align: center;
+    background: var(--blanco);
+    border-top: 4px solid var(--dorado);
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(2, 26, 83, .08);
+}
+
+.page-gestion-usuarios .gu-restringido__icono {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--azul-oscuro);
+    color: var(--dorado);
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.page-gestion-usuarios .gu-restringido h2 {
+    margin: 0 0 8px;
+    font-family: inherit;
+    font-size: 22px;
+    color: var(--azul-oscuro);
+}
+
+.page-gestion-usuarios .gu-restringido p {
+    margin: 0 0 20px;
+    font-size: 15px;
+    color: var(--texto-tenue);
+    line-height: 1.5;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+    .page-gestion-usuarios .gu-tabla {
+        min-width: 760px;
+    }
+
+    .page-gestion-usuarios .gu-tabla-wrap--plana .gu-tabla {
+        min-width: 520px;
+    }
+}
+
+@media (max-width: 600px) {
+    .page-gestion-usuarios .gu-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .page-gestion-usuarios .gu-buscar {
+        max-width: 100%;
+        margin-left: 0;
+    }
+
+    .page-gestion-usuarios .gu-select {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .page-gestion-usuarios .gu-filtro {
+        flex: 1 1 100%;
+    }
+
+    .gu-pagina .gu-masthead__stats {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: 100%;
+    }
+
+    .gu-modal-raiz .gu-modal__cabecera,
+    .gu-modal-raiz .gu-modal__cuerpo,
+    .gu-modal-raiz .gu-modal__pie {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .page-gestion-usuarios .gu-permiso {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* ---------- Movil: pestanas en varias lineas (sin deslizar horizontalmente) ---------- */
+@media (max-width: 600px) {
+    .gu-pagina .gu-pestanas {
+        flex-wrap: wrap;
+        overflow: visible;
+        gap: 0 4px;
+    }
+
+    .gu-pagina .gu-pestana {
+        flex: 1 1 auto;
+        white-space: normal;
+        text-align: center;
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
+    .page-gestion-usuarios .gu-acciones {
+        flex-wrap: wrap;
+    }
+}

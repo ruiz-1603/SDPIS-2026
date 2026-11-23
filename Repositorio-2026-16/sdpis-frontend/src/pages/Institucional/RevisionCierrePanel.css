@@ -1,0 +1,222 @@
+/* HU-017: revision de la jefatura y decision sobre la solicitud de cierre. */
+
+.rc-panel-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+}
+
+.rc-cargando,
+.rc-vacio {
+    color: var(--color-ink-muted);
+    font-size: var(--fs-small);
+}
+
+.rc-cargando {
+    padding: var(--space-5) var(--space-2);
+    text-align: center;
+}
+
+.rc-vacio {
+    margin: 0;
+}
+
+.rc-error {
+    margin-bottom: var(--space-4);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-sm);
+    background: var(--color-danger-soft);
+    color: var(--color-danger);
+    font-size: var(--fs-caption);
+}
+
+.rc-seccion {
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid var(--color-gray-soft);
+}
+
+    .rc-seccion h4,
+    .rc-decision-form h4 {
+        margin: 0 0 var(--space-3);
+        font-size: var(--fs-body);
+        color: var(--color-navy);
+    }
+
+    .rc-seccion h5 {
+        margin: var(--space-4) 0 var(--space-2);
+        font-size: var(--fs-small);
+        color: var(--color-ink-muted);
+    }
+
+/* La propuesta del funcionario es lo primero que revisa la jefatura. */
+.rc-propuesta {
+    margin-bottom: var(--space-2);
+    padding: var(--space-4);
+    border-left: 4px solid var(--color-blue-medium);
+    border-bottom: none;
+    border-radius: var(--radius-sm);
+    background: #eef2f9;
+}
+
+.rc-datos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: var(--space-3) var(--space-4);
+    margin: 0;
+}
+
+    .rc-datos dt {
+        font-size: var(--fs-small);
+        font-weight: 600;
+        color: var(--color-ink-muted);
+    }
+
+    .rc-datos dd {
+        margin: 2px 0 0;
+        font-size: var(--fs-caption);
+        color: var(--color-ink);
+        overflow-wrap: anywhere;
+        white-space: pre-line;
+    }
+
+.rc-dato-ancho {
+    grid-column: 1 / -1;
+}
+
+.rc-lista {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    font-size: var(--fs-caption);
+}
+
+    .rc-lista > li {
+        padding: var(--space-2) var(--space-3);
+        border-radius: var(--radius-sm);
+        background: var(--color-bg);
+        overflow-wrap: anywhere;
+    }
+
+.rc-boton-bitacora {
+    padding: 7px 16px;
+}
+
+.rc-lista--bitacora {
+    margin-top: var(--space-3);
+}
+
+    .rc-lista--bitacora > li > div:nth-child(2) {
+        margin: var(--space-1) 0;
+        white-space: pre-line;
+    }
+
+.rc-lista--decisiones > li > div + div {
+    margin-top: var(--space-1);
+    white-space: pre-line;
+}
+
+.rc-entrada-cabecera {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+}
+
+.rc-fecha {
+    margin-right: var(--space-2);
+    font-size: var(--fs-small);
+    color: var(--color-ink-muted);
+}
+
+.rc-texto-secundario {
+    font-size: var(--fs-small);
+    color: var(--color-ink-muted);
+    font-weight: normal;
+}
+
+.rc-decision {
+    padding: 2px var(--space-2);
+    border-radius: var(--radius-sm);
+    font-size: var(--fs-small);
+    font-weight: 600;
+}
+
+.rc-decision--aprobada {
+    background: var(--color-ok-soft);
+    color: var(--color-ok);
+}
+
+.rc-decision--rechazada {
+    background: var(--color-danger-soft);
+    color: var(--color-danger);
+}
+
+.rc-decision-form {
+    margin-top: var(--space-5);
+    padding: var(--space-4);
+    border: 1px solid var(--color-gold);
+    border-radius: var(--radius-md);
+    background: var(--color-gold-soft);
+}
+
+    .rc-decision-form > .rc-texto-secundario {
+        margin: 0 0 var(--space-4);
+    }
+
+.rc-campo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    margin-bottom: var(--space-4);
+}
+
+    .rc-campo label {
+        font-size: var(--fs-small);
+        font-weight: 600;
+        color: var(--color-ink);
+    }
+
+    .rc-campo textarea {
+        width: 100%;
+        box-sizing: border-box;
+        border: 1px solid var(--color-gray);
+        border-radius: var(--radius-sm);
+        padding: var(--space-2) var(--space-3);
+        font: inherit;
+        font-size: var(--fs-caption);
+        resize: vertical;
+        background: var(--color-white);
+    }
+
+        .rc-campo textarea[aria-invalid='true'] {
+            border-color: var(--color-danger);
+        }
+
+.rc-campo-pie {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-2);
+}
+
+.rc-campo-error {
+    font-size: var(--fs-small);
+    color: var(--color-danger);
+}
+
+.rc-contador {
+    font-size: var(--fs-small);
+    color: var(--color-ink-muted);
+}
+
+.rc-decision-pie {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+}

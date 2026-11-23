@@ -1,0 +1,459 @@
+.ct-layout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+/* Nota informativa (misma linea visual que las demas pantallas institucionales). */
+.ct-nota {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 10px 14px;
+    background: #fff;
+    border: 1px solid #dde2ec;
+    border-left: 3px solid var(--color-gold, #CFAC65);
+    border-radius: 6px;
+}
+
+.ct-nota__icono {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #eaeef7;
+    color: #164687;
+}
+
+.ct-nota p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.55;
+    color: #5B6479;
+}
+
+/* Selector de denuncia y filtros arriba del detalle (una sola columna, un
+   solo scroll vertical: el de la pagina). */
+.ct-selector {
+    padding: var(--space-4);
+}
+
+.ct-selector-cabecera {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-2) var(--space-4);
+    margin-bottom: var(--space-3);
+}
+
+    .ct-selector-cabecera h3 {
+        margin: 0;
+    }
+
+.ct-selector-fila {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: var(--space-4);
+}
+
+    .ct-selector-fila .ct-filtro {
+        flex: 1 1 220px;
+        min-width: 0;
+    }
+
+    .ct-selector-fila .ct-filtro--denuncia {
+        flex-basis: 280px;
+    }
+
+.ct-selector-mensaje {
+    margin: var(--space-3) 0 0;
+    font-size: var(--fs-small);
+    color: var(--color-ink-muted);
+}
+
+.ct-detalle {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.ct-detalle-card .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.ct-vacio {
+    padding: var(--space-5);
+    text-align: center;
+    color: var(--color-ink-muted);
+}
+
+.ct-sesion-simulada select {
+    margin: 0 var(--space-2);
+}
+
+.ct-alerta-vigente {
+    border-color: var(--color-amber, #b8860b);
+}
+
+.ct-solo-lectura {
+    background: var(--color-gray-soft);
+}
+
+.ct-acciones {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    border-top: 1px solid var(--color-gray-soft);
+}
+
+.ct-metadata-section {
+    border: 1px solid var(--color-gray-soft);
+    border-radius: var(--radius-sm);
+    padding: var(--space-4);
+}
+
+.ct-metadata-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-3);
+}
+
+    .ct-metadata-header h4 {
+        margin: 0;
+    }
+
+.ct-metadata-resumen {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin: 0;
+}
+
+    .ct-metadata-resumen dt {
+        font-size: var(--fs-caption);
+        color: var(--color-ink-muted);
+    }
+
+    .ct-metadata-resumen dd {
+        margin: 0;
+        font-size: var(--fs-small);
+        color: var(--color-ink);
+    }
+
+.ct-metadata-acciones {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-3);
+    margin-top: var(--space-3);
+}
+
+/* Resumen de criticidad: encabezado con el puntaje y, debajo, tres
+   recuadros (nivel, plazo en días, fecha máxima) con la etiqueta arriba y el
+   valor abajo. El filo superior toma el color del nivel, igual que las
+   tarjetas del portal (borde superior de color). */
+.ct-resumen-criticidad {
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-soft);
+    border-top: 3px solid var(--color-gray);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.ct-resumen-criticidad--alto {
+    border-top-color: var(--color-critico-alto);
+}
+
+.ct-resumen-criticidad--medio {
+    border-top-color: var(--color-critico-medio);
+}
+
+.ct-resumen-criticidad--bajo {
+    border-top-color: var(--color-critico-bajo);
+}
+
+.ct-puntaje-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+}
+
+.ct-resumen-etiqueta {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--color-navy);
+}
+
+.ct-puntaje-total strong {
+    flex-shrink: 0;
+    min-width: 32px;
+    text-align: center;
+    padding: 2px 10px;
+    border-radius: var(--radius-pill);
+    background: var(--color-navy);
+    color: var(--color-white);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.ct-resumen-lista {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: var(--space-3);
+}
+
+.ct-resumen-fila {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-2);
+    background: #f7f8fb;
+    border: 1px solid var(--color-gray-soft);
+    border-radius: var(--radius-sm);
+    padding: var(--space-3);
+}
+
+    .ct-resumen-fila dt {
+        font-size: 12px;
+        line-height: 1.3;
+        color: var(--color-ink-muted);
+    }
+
+    .ct-resumen-fila dd {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--color-ink);
+    }
+
+.ct-plazo-dias strong {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+}
+
+.ct-fecha-limite {
+    font-size: 17px;
+    color: var(--color-navy);
+}
+
+.ct-criticidad-pendiente {
+    color: var(--color-ink-muted);
+    font-size: var(--fs-caption);
+}
+
+@media (max-width: 600px) {
+    .ct-puntaje-total {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+.ct-criterios-lista {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.ct-criterio-fila {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    border: 1px solid var(--color-gray-soft);
+    border-radius: var(--radius-sm);
+    padding: var(--space-3);
+    flex-wrap: wrap;
+}
+
+.ct-criterio-info {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+}
+
+.ct-criterio-nombre {
+    font-weight: 700;
+    font-size: var(--fs-small);
+    color: var(--color-ink);
+}
+
+.ct-criterio-valor {
+    font-size: var(--fs-small);
+    color: var(--color-ink-muted);
+}
+
+.ct-criterio-acciones {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+/* Panel de justificacion obligatorio (editar un criterio ya registrado):
+   ocupa toda la fila (flex-basis 100%) para que quede debajo del selector
+   y los botones en vez de apretarse al lado, aprovechando que
+   .ct-criterio-fila ya tiene flex-wrap. */
+.ct-criterio-justificacion {
+    flex-basis: 100%;
+    margin-top: var(--space-2);
+}
+
+    .ct-criterio-justificacion textarea {
+        width: 100%;
+        resize: vertical;
+    }
+
+/* Informacion de la denuncia (arriba de los criterios tecnicos) */
+.ct-detalle-denuncia {
+    border: 1px solid var(--color-gray-soft);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-4);
+    background: var(--color-bg);
+}
+
+    .ct-detalle-denuncia > summary {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: var(--space-2) var(--space-3);
+        padding: var(--space-3) var(--space-4);
+        cursor: pointer;
+    }
+
+        .ct-detalle-denuncia > summary h4 {
+            display: inline;
+            margin: 0;
+        }
+
+    .ct-detalle-denuncia[open] > summary {
+        border-bottom: 1px solid var(--color-gray-soft);
+    }
+
+.ct-detalle-denuncia-resumen {
+    font-size: var(--fs-caption);
+    color: var(--color-ink-muted);
+}
+
+.ct-detalle-denuncia-cuerpo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-4);
+}
+
+    .ct-detalle-denuncia-cuerpo h5 {
+        margin: 0 0 var(--space-2);
+        font-size: var(--fs-small);
+        color: var(--color-navy);
+    }
+
+    .ct-detalle-denuncia-cuerpo .ct-vacio {
+        margin: 0;
+        padding: 0;
+        text-align: left;
+        font-size: var(--fs-small);
+    }
+
+.ct-texto-largo {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.ct-detalle-productos {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.ct-detalle-producto {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    border: 1px solid var(--color-gray-soft);
+    border-radius: var(--radius-sm);
+    background: var(--color-white);
+}
+
+.ct-detalle-producto-titulo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.ct-detalle-chip {
+    padding: 2px var(--space-2);
+    border-radius: var(--radius-pill);
+    background: var(--color-gray-soft);
+    font-size: var(--fs-caption);
+    color: var(--color-ink);
+}
+
+.ct-detalle-motivos {
+    margin: 0;
+    padding-left: var(--space-4);
+}
+
+.ct-detalle-producto-datos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: var(--space-2) var(--space-4);
+    margin: 0;
+}
+
+    .ct-detalle-producto-datos dt {
+        font-size: var(--fs-caption);
+        color: var(--color-ink-muted);
+    }
+
+    .ct-detalle-producto-datos dd {
+        margin: 0;
+        font-size: var(--fs-small);
+        color: var(--color-ink);
+        overflow-wrap: anywhere;
+    }
+/* HU-015: filtros segun el rol */
+.ct-filtro {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: #164687;
+}
+
+    .ct-filtro select {
+        font: inherit;
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: 0;
+        text-transform: none;
+        padding: 8px 10px;
+        border: 1px solid #C1C5C8;
+        border-radius: 4px;
+        background: #FFFFFF;
+        color: #021A53;
+    }
+
+.ct-filtro .sb-boton {
+    min-width: 0;
+}

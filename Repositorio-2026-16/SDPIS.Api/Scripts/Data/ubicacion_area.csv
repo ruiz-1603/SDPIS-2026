@@ -1,0 +1,481 @@
+provincia,canton,distrito,codigo_area,id_canton,id_distrito,nombre_ars,region
+Guanacaste,Abangares,Las Juntas,ABAN,61,367,A.R.S Abangares,Chorotega
+Guanacaste,Abangares,Sierra,ABAN,61,368,A.R.S Abangares,Chorotega
+Guanacaste,Abangares,San Juan,ABAN,61,369,A.R.S Abangares,Chorotega
+Guanacaste,Abangares,Colorado,ABAN,61,370,A.R.S Abangares,Chorotega
+San José,Aserrí,Vuelta De Jorco,ACOS,6,42,A.R.S Acosta,Central Sur
+San José,Acosta,San Ignacio,ACOS,12,76,A.R.S Acosta,Central Sur
+San José,Acosta,Guaitil,ACOS,12,77,A.R.S Acosta,Central Sur
+San José,Acosta,Cangrejal,ACOS,12,79,A.R.S Acosta,Central Sur
+San José,Acosta,Sabanillas,ACOS,12,80,A.R.S Acosta,Central Sur
+Alajuela,San Carlos,Aguas Zarcas,AZAR,30,196,A.R.S Aguas Zarcas,Huetar Norte
+Alajuela,San Carlos,Venecia,AZAR,30,197,A.R.S Aguas Zarcas,Huetar Norte
+Alajuela,San Carlos,Pital,AZAR,30,198,A.R.S Aguas Zarcas,Huetar Norte
+Alajuela,Central,Alajuela,ALA1,21,122,A.R.S Alajuela 1,Central Norte
+Alajuela,Central,Carrizal,ALA1,21,124,A.R.S Alajuela 1,Central Norte
+Alajuela,Central,San Isidro,ALA1,21,127,A.R.S Alajuela 1,Central Norte
+Alajuela,Central,Sabanilla,ALA1,21,128,A.R.S Alajuela 1,Central Norte
+Alajuela,Central,Rio Segundo,ALA1,21,130,A.R.S Alajuela 1,Central Norte
+Alajuela,Central,Desamparados,ALA1,21,131,A.R.S Alajuela 1,Central Norte
+Alajuela,Central,San José,ALA2,21,123,A.R.S Alajuela 2,Central Norte
+Alajuela,Central,San Antonio,ALA2,21,125,A.R.S Alajuela 2,Central Norte
+Alajuela,Central,Guácima,ALA2,21,126,A.R.S Alajuela 2,Central Norte
+Alajuela,Central,San Rafael,ALA2,21,129,A.R.S Alajuela 2,Central Norte
+Alajuela,Central,Turrucares,ALA2,21,132,A.R.S Alajuela 2,Central Norte
+Alajuela,Central,Tambor,ALA2,21,133,A.R.S Alajuela 2,Central Norte
+Alajuela,Central,Garita,ALA2,21,134,A.R.S Alajuela 2,Central Norte
+Alajuela,Central,Sarapiquí,ALA2,21,135,A.R.S Alajuela 2,Central Norte
+San José,Alajuelita,Alajuelita,ALTA,10,66,A.R.S Alajuelita,Central Sur
+San José,Alajuelita,San Josecito,ALTA,10,67,A.R.S Alajuelita,Central Sur
+San José,Alajuelita,San Antonio,ALTA,10,68,A.R.S Alajuelita,Central Sur
+San José,Alajuelita,Concepción,ALTA,10,69,A.R.S Alajuelita,Central Sur
+San José,Alajuelita,San Felipe,ALTA,10,70,A.R.S Alajuelita,Central Sur
+San José,Desamparados,San Juan De Dios,ASER,3,17,A.R.S Aserrí,Central Sur
+San José,Aserrí,Aserrí,ASER,6,40,A.R.S Aserrí,Central Sur
+San José,Aserrí,Tarbaca,ASER,6,41,A.R.S Aserrí,Central Sur
+San José,Aserrí,San Gabriel,ASER,6,43,A.R.S Aserrí,Central Sur
+San José,Aserrí,Legua,ASER,6,44,A.R.S Aserrí,Central Sur
+San José,Aserrí,Monterrey,ASER,6,45,A.R.S Aserrí,Central Sur
+San José,Aserrí,Salitrillos,ASER,6,46,A.R.S Aserrí,Central Sur
+Alajuela,Atenas,Atenas,ATEN,25,160,A.R.S Atenas,Central Norte
+Alajuela,Atenas,Jesús,ATEN,25,161,A.R.S Atenas,Central Norte
+Alajuela,Atenas,Mercedes,ATEN,25,162,A.R.S Atenas,Central Norte
+Alajuela,Atenas,San Isidro,ATEN,25,163,A.R.S Atenas,Central Norte
+Alajuela,Atenas,Concepción,ATEN,25,164,A.R.S Atenas,Central Norte
+Alajuela,Atenas,San José,ATEN,25,165,A.R.S Atenas,Central Norte
+Alajuela,Atenas,Santa Eulalia,ATEN,25,166,A.R.S Atenas,Central Norte
+Alajuela,Atenas,Escobal,ATEN,25,167,A.R.S Atenas,Central Norte
+Guanacaste,Bagaces,Bagaces,BAGA,58,354,A.R.S Bagaces,Chorotega
+Guanacaste,Bagaces,La Fortuna,BAGA,58,355,A.R.S Bagaces,Chorotega
+Guanacaste,Bagaces,Mogote,BAGA,58,356,A.R.S Bagaces,Chorotega
+Guanacaste,Bagaces,Rio Naranjo,BAGA,58,357,A.R.S Bagaces,Chorotega
+Puntarenas,Central,Barranca,BARR,66,399,A.R.S Barranca,Pacífico Central
+Puntarenas,Central,El Roble,BARR,66,406,A.R.S Barranca,Pacífico Central
+Heredia,Barva,Barva,BARV,46,291,A.R.S Barva - San Rafael,Central Norte
+Heredia,Barva,San Pedro,BARV,46,292,A.R.S Barva - San Rafael,Central Norte
+Heredia,Barva,San Pablo,BARV,46,293,A.R.S Barva - San Rafael,Central Norte
+Heredia,Barva,San Roque,BARV,46,294,A.R.S Barva - San Rafael,Central Norte
+Heredia,Barva,Santa Lucía,BARV,46,295,A.R.S Barva - San Rafael,Central Norte
+Heredia,Barva,San José de la Montaña,BARV,46,296,A.R.S Barva - San Rafael,Central Norte
+Heredia,San Rafael,San Rafael,BARV,49,311,A.R.S Barva - San Rafael,Central Norte
+Heredia,San Rafael,San Josecito,BARV,49,312,A.R.S Barva - San Rafael,Central Norte
+Heredia,San Rafael,Santiago,BARV,49,313,A.R.S Barva - San Rafael,Central Norte
+Heredia,San Rafael,Los Ángeles,BARV,49,314,A.R.S Barva - San Rafael,Central Norte
+Heredia,San Rafael,Concepción,BARV,49,315,A.R.S Barva - San Rafael,Central Norte
+Heredia,Belén,San Antonio,BELF,51,320,A.R.S Belén - Flores,Central Norte
+Heredia,Belén,La Ribera,BELF,51,321,A.R.S Belén - Flores,Central Norte
+Heredia,Belén,La Asuncion,BELF,51,322,A.R.S Belén - Flores,Central Norte
+Heredia,Flores,San Joaquín,BELF,52,323,A.R.S Belén - Flores,Central Norte
+Heredia,Flores,Barrantes,BELF,52,324,A.R.S Belén - Flores,Central Norte
+Heredia,Flores,Llorente,BELF,52,325,A.R.S Belén - Flores,Central Norte
+Puntarenas,Buenos Aires,Buenos Aires,BAIR,68,413,A.R.S Buenos Aires,Brunca
+Puntarenas,Buenos Aires,Volcán,BAIR,68,414,A.R.S Buenos Aires,Brunca
+Puntarenas,Buenos Aires,Potrero Grande,BAIR,68,415,A.R.S Buenos Aires,Brunca
+Puntarenas,Buenos Aires,Boruca,BAIR,68,416,A.R.S Buenos Aires,Brunca
+Puntarenas,Buenos Aires,Pilas,BAIR,68,417,A.R.S Buenos Aires,Brunca
+Puntarenas,Buenos Aires,Colinas,BAIR,68,418,A.R.S Buenos Aires,Brunca
+Puntarenas,Buenos Aires,Changuena,BAIR,68,419,A.R.S Buenos Aires,Brunca
+Puntarenas,Buenos Aires,Biolley,BAIR,68,420,A.R.S Buenos Aires,Brunca
+Puntarenas,Buenos Aires,Brunka,BAIR,68,421,A.R.S Buenos Aires,Brunca
+Guanacaste,Cañas,Cañas,CANA,60,362,A.R.S Cañas,Chorotega
+Guanacaste,Cañas,Palmira,CANA,60,363,A.R.S Cañas,Chorotega
+Guanacaste,Cañas,San Miguel,CANA,60,364,A.R.S Cañas,Chorotega
+Guanacaste,Cañas,Bebedero,CANA,60,365,A.R.S Cañas,Chorotega
+Guanacaste,Cañas,Porozal,CANA,60,366,A.R.S Cañas,Chorotega
+San José,Central,Carmen,CMU,1,1,A.R.S Carmen-Merced-Uruca,Central Sur
+San José,Central,Merced,CMU,1,2,A.R.S Carmen-Merced-Uruca,Central Sur
+San José,Central,Uruca,CMU,1,7,A.R.S Carmen-Merced-Uruca,Central Sur
+Guanacaste,Carrillo,Filadelfia,CARR,59,358,A.R.S Carrillo,Chorotega
+Guanacaste,Carrillo,Palmira,CARR,59,359,A.R.S Carrillo,Chorotega
+Guanacaste,Carrillo,Sardinal,CARR,59,360,A.R.S Carrillo,Chorotega
+Guanacaste,Carrillo,Belen,CARR,59,361,A.R.S Carrillo,Chorotega
+Cartago,Central,Oriental,CART,37,235,A.R.S Cartago,Central Este
+Cartago,Central,Occidental,CART,37,236,A.R.S Cartago,Central Este
+Cartago,Central,Carmen,CART,37,237,A.R.S Cartago,Central Este
+Cartago,Central,San Nicolás,CART,37,238,A.R.S Cartago,Central Este
+Cartago,Central,Aguacaliente o San Francisco,CART,37,239,A.R.S Cartago,Central Este
+Cartago,Central,Guadalupe o Arenilla,CART,37,240,A.R.S Cartago,Central Este
+Cartago,Central,Corralillo,CART,37,241,A.R.S Cartago,Central Este
+Cartago,Central,Tierra Blanca,CART,37,242,A.R.S Cartago,Central Este
+Cartago,Central,Dulce Nombre,CART,37,243,A.R.S Cartago,Central Este
+Cartago,Central,Llano Grande,CART,37,244,A.R.S Cartago,Central Este
+Cartago,Central,Quebradilla,CART,37,245,A.R.S Cartago,Central Este
+Alajuela,San Carlos,Quesada,CQUE,30,193,A.R.S Ciudad Quesada,Huetar Norte
+Alajuela,San Carlos,Buenavista,CQUE,30,195,A.R.S Ciudad Quesada,Huetar Norte
+Alajuela,San Carlos,La Palmera,CQUE,30,201,A.R.S Ciudad Quesada,Huetar Norte
+San José,Goicoechea,Ipís,CORO,8,57,A.R.S Coronado,Central Sur
+San José,Vázquez de Coronado,San Isidro,CORO,11,71,A.R.S Coronado,Central Sur
+San José,Vázquez de Coronado,San Rafael,CORO,11,72,A.R.S Coronado,Central Sur
+San José,Vázquez de Coronado,Dulce Nombre De Jesus,CORO,11,73,A.R.S Coronado,Central Sur
+San José,Vázquez de Coronado,Patalillo,CORO,11,74,A.R.S Coronado,Central Sur
+San José,Vázquez de Coronado,Cascajal,CORO,11,75,A.R.S Coronado,Central Sur
+Puntarenas,Corredores,Corredor,CORR,75,443,A.R.S Corredores,Brunca
+Puntarenas,Corredores,La Cuesta,CORR,75,444,A.R.S Corredores,Brunca
+Puntarenas,Corredores,Canoas,CORR,75,445,A.R.S Corredores,Brunca
+Puntarenas,Corredores,Laurel,CORR,75,446,A.R.S Corredores,Brunca
+Puntarenas,Coto Brus,San Vito,CBRU,73,438,A.R.S Coto Brus,Brunca
+Puntarenas,Coto Brus,Sabalito,CBRU,73,439,A.R.S Coto Brus,Brunca
+Puntarenas,Coto Brus,Aguabuena,CBRU,73,440,A.R.S Coto Brus,Brunca
+Puntarenas,Coto Brus,Limoncito,CBRU,73,441,A.R.S Coto Brus,Brunca
+Puntarenas,Coto Brus,Pittier,CBRU,73,442,A.R.S Coto Brus,Brunca
+San José,Curridabat,Curridabat,CURR,18,101,A.R.S Curridabat,Central Sur
+San José,Curridabat,Granadilla,CURR,18,102,A.R.S Curridabat,Central Sur
+San José,Curridabat,Sanchez,CURR,18,103,A.R.S Curridabat,Central Sur
+San José,Curridabat,Tirrases,CURR,18,104,A.R.S Curridabat,Central Sur
+San José,Desamparados,Desamparados,DESA,3,15,A.R.S Desamparados,Central Sur
+San José,Desamparados,San Miguel,DESA,3,16,A.R.S Desamparados,Central Sur
+San José,Desamparados,San Rafael Arriba,DESA,3,18,A.R.S Desamparados,Central Sur
+San José,Desamparados,San Rafael Abajo,DESA,3,19,A.R.S Desamparados,Central Sur
+San José,Desamparados,San Antonio,DESA,3,20,A.R.S Desamparados,Central Sur
+San José,Desamparados,Frailes,DESA,3,21,A.R.S Desamparados,Central Sur
+San José,Desamparados,Patarra,DESA,3,22,A.R.S Desamparados,Central Sur
+San José,Desamparados,San Cristobal,DESA,3,23,A.R.S Desamparados,Central Sur
+San José,Desamparados,Rosario,DESA,3,24,A.R.S Desamparados,Central Sur
+San José,Desamparados,Damas,DESA,3,25,A.R.S Desamparados,Central Sur
+San José,Desamparados,Gravilias,DESA,3,26,A.R.S Desamparados,Central Sur
+San José,Desamparados,Los Guido,DESA,3,27,A.R.S Desamparados,Central Sur
+San José,Escazú,Escazú,ESCA,2,12,A.R.S Escazú,Central Sur
+San José,Escazú,San Antonio,ESCA,2,13,A.R.S Escazú,Central Sur
+San José,Escazú,San Rafael,ESCA,2,14,A.R.S Escazú,Central Sur
+Puntarenas,Esparza,Espíritu Santo,ESPA,67,408,A.R.S Esparza,Pacífico Central
+Puntarenas,Esparza,San Juan Grande,ESPA,67,409,A.R.S Esparza,Pacífico Central
+Puntarenas,Esparza,Macacona,ESPA,67,410,A.R.S Esparza,Pacífico Central
+Puntarenas,Esparza,San Rafael,ESPA,67,411,A.R.S Esparza,Pacífico Central
+Puntarenas,Esparza,San Jerónimo,ESPA,67,412,A.R.S Esparza,Pacífico Central
+Alajuela,San Carlos,Florencia,FLOR,30,194,A.R.S Florencia,Huetar Norte
+Alajuela,San Carlos,La Fortuna,FLOR,30,199,A.R.S Florencia,Huetar Norte
+Alajuela,San Carlos,La Tigra,FLOR,30,200,A.R.S Florencia,Huetar Norte
+Alajuela,San Carlos,Venado,FLOR,30,202,A.R.S Florencia,Huetar Norte
+Alajuela,San Carlos,Monterrey,FLOR,30,204,A.R.S Florencia,Huetar Norte
+Puntarenas,Garabito,Jacó,GARA,76,447,A.R.S Garabito,Pacífico Central
+Puntarenas,Garabito,Tárcoles,GARA,76,448,A.R.S Garabito,Pacífico Central
+San José,Goicoechea,Guadalupe,GOIC,8,53,A.R.S Goicoechea,Central Sur
+San José,Goicoechea,San Francisco,GOIC,8,54,A.R.S Goicoechea,Central Sur
+San José,Goicoechea,Calle Blancos,GOIC,8,55,A.R.S Goicoechea,Central Sur
+San José,Goicoechea,Mata De Platano,GOIC,8,56,A.R.S Goicoechea,Central Sur
+San José,Goicoechea,Rancho Redondo,GOIC,8,58,A.R.S Goicoechea,Central Sur
+San José,Goicoechea,Purral,GOIC,8,59,A.R.S Goicoechea,Central Sur
+Puntarenas,Golfito,Golfito,GOLF,72,434,A.R.S Golfito,Brunca
+Puntarenas,Golfito,Puerto Jiménez,GOLF,72,435,A.R.S Golfito,Brunca
+Puntarenas,Golfito,Guaycara,GOLF,72,436,A.R.S Golfito,Brunca
+Puntarenas,Golfito,Pavón,GOLF,72,437,A.R.S Golfito,Brunca
+Puntarenas,Puerto Jiménez,,GOLF,78,,A.R.S Golfito,Brunca
+Alajuela,Grecia,Grecia,GREC,23,149,A.R.S Grecia,Central Norte
+Alajuela,Grecia,San Isidro,GREC,23,150,A.R.S Grecia,Central Norte
+Alajuela,Grecia,San José,GREC,23,151,A.R.S Grecia,Central Norte
+Alajuela,Grecia,San Roque,GREC,23,152,A.R.S Grecia,Central Norte
+Alajuela,Grecia,Tacares,GREC,23,153,A.R.S Grecia,Central Norte
+Alajuela,Grecia,Puente De Piedra,GREC,23,154,A.R.S Grecia,Central Norte
+Alajuela,Grecia,Bolívar,GREC,23,155,A.R.S Grecia,Central Norte
+Alajuela,Río Cuarto,Río Cuarto,GREC,36,234,A.R.S Grecia,Central Norte
+Limón,Guácimo,Guácimo,GUAC,84,473,A.R.S Guácimo,Huetar Caribe
+Limón,Guácimo,Mercedes,GUAC,84,474,A.R.S Guácimo,Huetar Caribe
+Limón,Guácimo,Pocora,GUAC,84,475,A.R.S Guácimo,Huetar Caribe
+Limón,Guácimo,Rio Jiménez,GUAC,84,476,A.R.S Guácimo,Huetar Caribe
+Limón,Guácimo,Duacari,GUAC,84,477,A.R.S Guácimo,Huetar Caribe
+Alajuela,Guatuso,San Rafael,GUAT,35,230,A.R.S Guatuso,Huetar Norte
+Alajuela,Guatuso,Buenavista,GUAT,35,231,A.R.S Guatuso,Huetar Norte
+Alajuela,Guatuso,Cote,GUAT,35,232,A.R.S Guatuso,Huetar Norte
+Alajuela,Guatuso,Katira,GUAT,35,233,A.R.S Guatuso,Huetar Norte
+San José,Central,Hatillo,HATI,1,10,A.R.S Hatillo,Central Sur
+Heredia,Central,Heredia,HERE,45,286,A.R.S Heredia,Central Norte
+Heredia,Central,Mercedes,HERE,45,287,A.R.S Heredia,Central Norte
+Heredia,Central,San Francisco,HERE,45,288,A.R.S Heredia,Central Norte
+Heredia,Central,Ulloa,HERE,45,289,A.R.S Heredia,Central Norte
+Heredia,Central,Varablanca,HERE,45,290,A.R.S Heredia,Central Norte
+Guanacaste,Hojancha,Hojancha,HOJA,65,388,A.R.S Hojancha,Chorotega
+Guanacaste,Hojancha,Monte Romo,HOJA,65,389,A.R.S Hojancha,Chorotega
+Guanacaste,Hojancha,Puerto Carrillo,HOJA,65,390,A.R.S Hojancha,Chorotega
+Guanacaste,Hojancha,Huacas,HOJA,65,391,A.R.S Hojancha,Chorotega
+San José,Central,Hospital,HMR,1,3,A.R.S Hospital Mata Redonda,Central Sur
+San José,Central,Mata Redonda,HMR,1,8,A.R.S Hospital Mata Redonda,Central Sur
+Guanacaste,La Cruz,La Cruz,LCRU,64,384,A.R.S La Cruz,Chorotega
+Guanacaste,La Cruz,Santa Cecilia,LCRU,64,385,A.R.S La Cruz,Chorotega
+Guanacaste,La Cruz,La Garita,LCRU,64,386,A.R.S La Cruz,Chorotega
+Guanacaste,La Cruz,Santa Elena,LCRU,64,387,A.R.S La Cruz,Chorotega
+Cartago,La Unión,Tres Rios,LUNION,39,251,A.R.S La Unión,Central Este
+Cartago,La Unión,San Diego,LUNION,39,252,A.R.S La Unión,Central Este
+Cartago,La Unión,San Juan,LUNION,39,253,A.R.S La Unión,Central Este
+Cartago,La Unión,San Rafael,LUNION,39,254,A.R.S La Unión,Central Este
+Cartago,La Unión,Concepción,LUNION,39,255,A.R.S La Unión,Central Este
+Cartago,La Unión,Dulce Nombre,LUNION,39,256,A.R.S La Unión,Central Este
+Cartago,La Unión,San Ramón,LUNION,39,257,A.R.S La Unión,Central Este
+Cartago,La Unión,Rio Azul,LUNION,39,258,A.R.S La Unión,Central Este
+Guanacaste,Liberia,Liberia,LIBE,55,333,A.R.S Liberia,Chorotega
+Guanacaste,Liberia,Cañas Dulces,LIBE,55,334,A.R.S Liberia,Chorotega
+Guanacaste,Liberia,Mayorga,LIBE,55,335,A.R.S Liberia,Chorotega
+Guanacaste,Liberia,Nacascolo,LIBE,55,336,A.R.S Liberia,Chorotega
+Guanacaste,Liberia,Curubande,LIBE,55,337,A.R.S Liberia,Chorotega
+Limón,Central,Limón,LIMO,79,449,A.R.S Limón,Huetar Caribe
+Limón,Central,Valle La Estrella,LIMO,79,450,A.R.S Limón,Huetar Caribe
+Limón,Central,Rio Blanco,LIMO,79,451,A.R.S Limón,Huetar Caribe
+Limón,Central,Matama,LIMO,79,452,A.R.S Limón,Huetar Caribe
+Alajuela,Los Chiles,Los Chiles,LCHI,34,226,A.R.S Los Chiles,Huetar Norte
+Alajuela,Los Chiles,Caño Negro,LCHI,34,227,A.R.S Los Chiles,Huetar Norte
+Alajuela,Los Chiles,El Amparo,LCHI,34,228,A.R.S Los Chiles,Huetar Norte
+Alajuela,Los Chiles,San Jorge,LCHI,34,229,A.R.S Los Chiles,Huetar Norte
+San José,Tarrazú,San Marcos,LSAN,5,37,A.R.S Los Santos,Central Este
+San José,Tarrazú,San Lorenzo,LSAN,5,38,A.R.S Los Santos,Central Este
+San José,Tarrazú,San Carlos,LSAN,5,39,A.R.S Los Santos,Central Este
+San José,Dota,Santa María,LSAN,17,98,A.R.S Los Santos,Central Este
+San José,Dota,Jardin,LSAN,17,99,A.R.S Los Santos,Central Este
+San José,Dota,Copey,LSAN,17,100,A.R.S Los Santos,Central Este
+San José,León Cortés Castro,San Pablo,LSAN,20,116,A.R.S Los Santos,Central Este
+San José,León Cortés Castro,San Andrés,LSAN,20,117,A.R.S Los Santos,Central Este
+San José,León Cortés Castro,Llano Bonito,LSAN,20,118,A.R.S Los Santos,Central Este
+San José,León Cortés Castro,San Isidro,LSAN,20,119,A.R.S Los Santos,Central Este
+San José,León Cortés Castro,Santa Cruz,LSAN,20,120,A.R.S Los Santos,Central Este
+San José,León Cortés Castro,San Antonio,LSAN,20,121,A.R.S Los Santos,Central Este
+Limón,Matina,Matina,MATI,83,470,A.R.S Matina,Huetar Caribe
+Limón,Matina,Batán,MATI,83,471,A.R.S Matina,Huetar Caribe
+Limón,Matina,Carrandi,MATI,83,472,A.R.S Matina,Huetar Caribe
+San José,Montes de Oca,San Pedro,MOCA,15,89,A.R.S Montes de Oca,Central Sur
+San José,Montes de Oca,Sabanilla,MOCA,15,90,A.R.S Montes de Oca,Central Sur
+San José,Montes de Oca,Mercedes,MOCA,15,91,A.R.S Montes de Oca,Central Sur
+San José,Montes de Oca,San Rafael,MOCA,15,92,A.R.S Montes de Oca,Central Sur
+Puntarenas,Central,Monte Verde,MORO,66,400,A.R.S Montes de Oro,Pacífico Central
+Puntarenas,Montes De Oro,Miramar,MORO,69,422,A.R.S Montes de Oro,Pacífico Central
+Puntarenas,Montes De Oro,La Unión,MORO,69,423,A.R.S Montes de Oro,Pacífico Central
+Puntarenas,Montes De Oro,San Isidro,MORO,69,424,A.R.S Montes de Oro,Pacífico Central
+Puntarenas,Monteverde,,MORO,77,,A.R.S Montes de Oro,Pacífico Central
+San José,Mora,Colón,MORA,7,47,A.R.S Mora,Central Sur
+San José,Mora,Guayabo,MORA,7,48,A.R.S Mora,Central Sur
+San José,Mora,Tabarcia,MORA,7,49,A.R.S Mora,Central Sur
+San José,Mora,Piedras Negras,MORA,7,50,A.R.S Mora,Central Sur
+San José,Mora,Picagres,MORA,7,51,A.R.S Mora,Central Sur
+San José,Mora,Jaris,MORA,7,52,A.R.S Mora,Central Sur
+San José,Acosta,Palmichal,MORA,12,78,A.R.S Mora,Central Sur
+San José,Moravia,San Vicente,MORV,14,86,A.R.S Moravia,Central Sur
+San José,Moravia,San Jeronimo,MORV,14,87,A.R.S Moravia,Central Sur
+San José,Moravia,La Trinidad,MORV,14,88,A.R.S Moravia,Central Sur
+Guanacaste,Nandayure,Carmona,NAND,63,378,A.R.S Nandayure,Chorotega
+Guanacaste,Nandayure,Santa Rita,NAND,63,379,A.R.S Nandayure,Chorotega
+Guanacaste,Nandayure,Zapotal,NAND,63,380,A.R.S Nandayure,Chorotega
+Guanacaste,Nandayure,San Pablo,NAND,63,381,A.R.S Nandayure,Chorotega
+Guanacaste,Nandayure,Porvenir,NAND,63,382,A.R.S Nandayure,Chorotega
+Guanacaste,Nandayure,Bejuco,NAND,63,383,A.R.S Nandayure,Chorotega
+Alajuela,Naranjo,Naranjo,NARA,26,168,A.R.S Naranjo,Central Occidente
+Alajuela,Naranjo,San Miguel,NARA,26,169,A.R.S Naranjo,Central Occidente
+Alajuela,Naranjo,San José,NARA,26,170,A.R.S Naranjo,Central Occidente
+Alajuela,Naranjo,Cirrí Sur,NARA,26,171,A.R.S Naranjo,Central Occidente
+Alajuela,Naranjo,San Jerónimo,NARA,26,172,A.R.S Naranjo,Central Occidente
+Alajuela,Naranjo,San Juan,NARA,26,173,A.R.S Naranjo,Central Occidente
+Alajuela,Naranjo,El Rosario,NARA,26,174,A.R.S Naranjo,Central Occidente
+Alajuela,Naranjo,Palmitos,NARA,26,175,A.R.S Naranjo,Central Occidente
+Guanacaste,Nicoya,Nicoya,NICO,56,338,A.R.S Nicoya,Chorotega
+Guanacaste,Nicoya,Mansión,NICO,56,339,A.R.S Nicoya,Chorotega
+Guanacaste,Nicoya,San Antonio,NICO,56,340,A.R.S Nicoya,Chorotega
+Guanacaste,Nicoya,Quebrada Honda,NICO,56,341,A.R.S Nicoya,Chorotega
+Guanacaste,Nicoya,Sámara,NICO,56,342,A.R.S Nicoya,Chorotega
+Guanacaste,Nicoya,Nosara,NICO,56,343,A.R.S Nicoya,Chorotega
+Guanacaste,Nicoya,Belén De Nosarita,NICO,56,344,A.R.S Nicoya,Chorotega
+Cartago,Alvarado,Pacayas,OREA,42,274,A.R.S Oreamuno,Central Este
+Cartago,Alvarado,Capellades,OREA,42,276,A.R.S Oreamuno,Central Este
+Cartago,Oreamuno,San Rafael,OREA,43,277,A.R.S Oreamuno,Central Este
+Cartago,Oreamuno,Cot,OREA,43,278,A.R.S Oreamuno,Central Este
+Cartago,Oreamuno,Potrero Cerrado,OREA,43,279,A.R.S Oreamuno,Central Este
+Cartago,Oreamuno,Cipreses,OREA,43,280,A.R.S Oreamuno,Central Este
+Cartago,Oreamuno,Santa Rosa,OREA,43,281,A.R.S Oreamuno,Central Este
+Alajuela,San Mateo,San Mateo,OROT,24,156,A.R.S Orotina San Mateo,Pacífico Central
+Alajuela,San Mateo,Desmonte,OROT,24,157,A.R.S Orotina San Mateo,Pacífico Central
+Alajuela,San Mateo,Jesús María,OROT,24,158,A.R.S Orotina San Mateo,Pacífico Central
+Alajuela,San Mateo,Labrador,OROT,24,159,A.R.S Orotina San Mateo,Pacífico Central
+Alajuela,Orotina,Orotina,OROT,29,188,A.R.S Orotina San Mateo,Pacífico Central
+Alajuela,Orotina,El Mastate,OROT,29,189,A.R.S Orotina San Mateo,Pacífico Central
+Alajuela,Orotina,Hacienda Vieja,OROT,29,190,A.R.S Orotina San Mateo,Pacífico Central
+Alajuela,Orotina,Coyolar,OROT,29,191,A.R.S Orotina San Mateo,Pacífico Central
+Alajuela,Orotina,La Ceiba,OROT,29,192,A.R.S Orotina San Mateo,Pacífico Central
+Puntarenas,Osa,Puerto Cortés,OSA,70,425,A.R.S Osa,Brunca
+Puntarenas,Osa,Palmar,OSA,70,426,A.R.S Osa,Brunca
+Puntarenas,Osa,Sierpe,OSA,70,427,A.R.S Osa,Brunca
+Puntarenas,Osa,Bahía Ballena,OSA,70,428,A.R.S Osa,Brunca
+Puntarenas,Osa,Piedras Blancas,OSA,70,429,A.R.S Osa,Brunca
+Puntarenas,Osa,Bahía Drake,OSA,70,430,A.R.S Osa,Brunca
+Alajuela,Palmares,Palmares,PALM,27,176,A.R.S Palmares,Central Occidente
+Alajuela,Palmares,Zaragoza,PALM,27,177,A.R.S Palmares,Central Occidente
+Alajuela,Palmares,Buenos Aires,PALM,27,178,A.R.S Palmares,Central Occidente
+Alajuela,Palmares,Santiago,PALM,27,179,A.R.S Palmares,Central Occidente
+Alajuela,Palmares,Candelaria,PALM,27,180,A.R.S Palmares,Central Occidente
+Alajuela,Palmares,Esquipulas,PALM,27,181,A.R.S Palmares,Central Occidente
+Alajuela,Palmares,La Granja,PALM,27,182,A.R.S Palmares,Central Occidente
+Cartago,Paraíso,Paraiso,PARA,38,246,A.R.S Paraíso,Central Este
+Cartago,Paraíso,Santiago,PARA,38,247,A.R.S Paraíso,Central Este
+Cartago,Paraíso,Orosi,PARA,38,248,A.R.S Paraíso,Central Este
+Cartago,Paraíso,Cachí,PARA,38,249,A.R.S Paraíso,Central Este
+Cartago,Paraíso,Llanos de Santa Lucía,PARA,38,250,A.R.S Paraíso,Central Este
+Cartago,Alvarado,Cervantes,PARA,42,275,A.R.S Paraíso,Central Este
+Puntarenas,Parrita,,PARR,74,,A.R.S Parrita,Pacífico Central
+San José,Central,Pavas,PAVA,1,9,A.R.S Pavas,Central Sur
+Puntarenas,Central,Lepanto,PENI,66,395,A.R.S Peninsular,Pacífico Central
+Puntarenas,Central,Paquera,PENI,66,396,A.R.S Peninsular,Pacífico Central
+Puntarenas,Central,Manzanillo,PENI,66,397,A.R.S Peninsular,Pacífico Central
+Puntarenas,Central,Cóbano,PENI,66,402,A.R.S Peninsular,Pacífico Central
+Puntarenas,Central,Chira,PENI,66,404,A.R.S Peninsular,Pacífico Central
+San José,Pérez Zeledón,San Isidro De El General,PZEL,19,105,A.R.S Pérez Zeledón,Brunca
+San José,Pérez Zeledón,El General,PZEL,19,106,A.R.S Pérez Zeledón,Brunca
+San José,Pérez Zeledón,Daniel Flores,PZEL,19,107,A.R.S Pérez Zeledón,Brunca
+San José,Pérez Zeledón,Rivas,PZEL,19,108,A.R.S Pérez Zeledón,Brunca
+San José,Pérez Zeledón,San Pedro,PZEL,19,109,A.R.S Pérez Zeledón,Brunca
+San José,Pérez Zeledón,Platanares,PZEL,19,110,A.R.S Pérez Zeledón,Brunca
+San José,Pérez Zeledón,Pejibaye,PZEL,19,111,A.R.S Pérez Zeledón,Brunca
+San José,Pérez Zeledón,Cajon,PZEL,19,112,A.R.S Pérez Zeledón,Brunca
+San José,Pérez Zeledón,Baru,PZEL,19,113,A.R.S Pérez Zeledón,Brunca
+San José,Pérez Zeledón,Rio Nuevo,PZEL,19,114,A.R.S Pérez Zeledón,Brunca
+San José,Pérez Zeledón,Páramo,PZEL,19,115,A.R.S Pérez Zeledón,Brunca
+Alajuela,Poás,San Pedro,POAS,28,183,A.R.S Poás,Central Norte
+Alajuela,Poás,San Juan,POAS,28,184,A.R.S Poás,Central Norte
+Alajuela,Poás,San Rafael,POAS,28,185,A.R.S Poás,Central Norte
+Alajuela,Poás,Carrillos,POAS,28,186,A.R.S Poás,Central Norte
+Alajuela,Poás,Sabana Redonda,POAS,28,187,A.R.S Poás,Central Norte
+Limón,Pococí,Guapiles,POCO,80,453,A.R.S Pococí,Huetar Caribe
+Limón,Pococí,Jiménez,POCO,80,454,A.R.S Pococí,Huetar Caribe
+Limón,Pococí,Rita,POCO,80,455,A.R.S Pococí,Huetar Caribe
+Limón,Pococí,Roxana,POCO,80,456,A.R.S Pococí,Huetar Caribe
+Limón,Pococí,Cariari,POCO,80,457,A.R.S Pococí,Huetar Caribe
+Limón,Pococí,Colorado,POCO,80,458,A.R.S Pococí,Huetar Caribe
+Limón,Pococí,La Colonia,POCO,80,459,A.R.S Pococí,Huetar Caribe
+Puntarenas,Central,Puntarenas,PUNT,66,392,A.R.S Puntarenas - Chacarita,Pacífico Central
+Puntarenas,Central,Pitahaya,PUNT,66,393,A.R.S Puntarenas - Chacarita,Pacífico Central
+Puntarenas,Central,Chomes,PUNT,66,394,A.R.S Puntarenas - Chacarita,Pacífico Central
+Puntarenas,Central,Guacimal,PUNT,66,398,A.R.S Puntarenas - Chacarita,Pacífico Central
+Puntarenas,Central,Isla Del Coco,PUNT,66,401,A.R.S Puntarenas - Chacarita,Pacífico Central
+Puntarenas,Central,Chacarita,PUNT,66,403,A.R.S Puntarenas - Chacarita,Pacífico Central
+Puntarenas,Central,Acapulco,PUNT,66,405,A.R.S Puntarenas - Chacarita,Pacífico Central
+Puntarenas,Central,Arancibia,PUNT,66,407,A.R.S Puntarenas - Chacarita,Pacífico Central
+San José,Puriscal,Santiago,PURI,4,28,A.R.S Puriscal Turrubares,Central Sur
+San José,Puriscal,Mercedes Sur,PURI,4,29,A.R.S Puriscal Turrubares,Central Sur
+San José,Puriscal,Barbacoas,PURI,4,30,A.R.S Puriscal Turrubares,Central Sur
+San José,Puriscal,Grifo Alto,PURI,4,31,A.R.S Puriscal Turrubares,Central Sur
+San José,Puriscal,San Rafael,PURI,4,32,A.R.S Puriscal Turrubares,Central Sur
+San José,Puriscal,Candelarita,PURI,4,33,A.R.S Puriscal Turrubares,Central Sur
+San José,Puriscal,Desamparaditos,PURI,4,34,A.R.S Puriscal Turrubares,Central Sur
+San José,Puriscal,San Antonio,PURI,4,35,A.R.S Puriscal Turrubares,Central Sur
+San José,Puriscal,Chires,PURI,4,36,A.R.S Puriscal Turrubares,Central Sur
+San José,Turrubares,San Pablo,PURI,16,93,A.R.S Puriscal Turrubares,Central Sur
+San José,Turrubares,San Pedro,PURI,16,94,A.R.S Puriscal Turrubares,Central Sur
+San José,Turrubares,San Juan De Mata,PURI,16,95,A.R.S Puriscal Turrubares,Central Sur
+San José,Turrubares,San Luis,PURI,16,96,A.R.S Puriscal Turrubares,Central Sur
+San José,Turrubares,Carara,PURI,16,97,A.R.S Puriscal Turrubares,Central Sur
+Puntarenas,Quepos,Quepos,QUEP,71,431,A.R.S Quepos,Pacífico Central
+Puntarenas,Quepos,Savegre,QUEP,71,432,A.R.S Quepos,Pacífico Central
+Puntarenas,Quepos,Naranjito,QUEP,71,433,A.R.S Quepos,Pacífico Central
+Heredia,San Isidro,San Isidro,SPSI,50,316,A.R.S San Pablo - San Isidro,Central Norte
+Heredia,San Isidro,San José,SPSI,50,317,A.R.S San Pablo - San Isidro,Central Norte
+Heredia,San Isidro,Concepción,SPSI,50,318,A.R.S San Pablo - San Isidro,Central Norte
+Heredia,San Isidro,San Francisco,SPSI,50,319,A.R.S San Pablo - San Isidro,Central Norte
+Heredia,San Pablo,San Pablo,SPSI,53,326,A.R.S San Pablo - San Isidro,Central Norte
+Heredia,San Pablo,Rincon De Sabanilla,SPSI,53,327,A.R.S San Pablo - San Isidro,Central Norte
+Alajuela,San Ramón,San Ramón,SRAM,22,136,A.R.S San Ramón,Central Occidente
+Alajuela,San Ramón,Santiago,SRAM,22,137,A.R.S San Ramón,Central Occidente
+Alajuela,San Ramón,San Juan,SRAM,22,138,A.R.S San Ramón,Central Occidente
+Alajuela,San Ramón,Piedades Norte,SRAM,22,139,A.R.S San Ramón,Central Occidente
+Alajuela,San Ramón,Piedades Sur,SRAM,22,140,A.R.S San Ramón,Central Occidente
+Alajuela,San Ramón,San Rafael,SRAM,22,141,A.R.S San Ramón,Central Occidente
+Alajuela,San Ramón,San Isidro,SRAM,22,142,A.R.S San Ramón,Central Occidente
+Alajuela,San Ramón,Angeles,SRAM,22,143,A.R.S San Ramón,Central Occidente
+Alajuela,San Ramón,Alfaro,SRAM,22,144,A.R.S San Ramón,Central Occidente
+Alajuela,San Ramón,Volio,SRAM,22,145,A.R.S San Ramón,Central Occidente
+Alajuela,San Ramón,Concepción,SRAM,22,146,A.R.S San Ramón,Central Occidente
+Alajuela,San Ramón,Zapotal,SRAM,22,147,A.R.S San Ramón,Central Occidente
+Alajuela,San Ramón,Peñas Blancas,SRAM,22,148,A.R.S San Ramón,Central Occidente
+San José,Santa Ana,Santa Ana,SANA,9,60,A.R.S Santa Ana,Central Sur
+San José,Santa Ana,Salitral,SANA,9,61,A.R.S Santa Ana,Central Sur
+San José,Santa Ana,Pozos,SANA,9,62,A.R.S Santa Ana,Central Sur
+San José,Santa Ana,Uruca,SANA,9,63,A.R.S Santa Ana,Central Sur
+San José,Santa Ana,Piedades,SANA,9,64,A.R.S Santa Ana,Central Sur
+San José,Santa Ana,Brasil,SANA,9,65,A.R.S Santa Ana,Central Sur
+Heredia,Santa Bárbara,Santa Bárbara,SBAR,48,305,A.R.S Santa Bárbara,Central Norte
+Heredia,Santa Bárbara,San Pedro,SBAR,48,306,A.R.S Santa Bárbara,Central Norte
+Heredia,Santa Bárbara,San Juan,SBAR,48,307,A.R.S Santa Bárbara,Central Norte
+Heredia,Santa Bárbara,Jesús,SBAR,48,308,A.R.S Santa Bárbara,Central Norte
+Heredia,Santa Bárbara,Santo Domingo,SBAR,48,309,A.R.S Santa Bárbara,Central Norte
+Heredia,Santa Bárbara,Puraba,SBAR,48,310,A.R.S Santa Bárbara,Central Norte
+Guanacaste,Santa Cruz,Santa Cruz,SCRU,57,345,A.R.S Santa Cruz,Chorotega
+Guanacaste,Santa Cruz,Bolson,SCRU,57,346,A.R.S Santa Cruz,Chorotega
+Guanacaste,Santa Cruz,Veintisiete de Abril,SCRU,57,347,A.R.S Santa Cruz,Chorotega
+Guanacaste,Santa Cruz,Tempate,SCRU,57,348,A.R.S Santa Cruz,Chorotega
+Guanacaste,Santa Cruz,Cartagena,SCRU,57,349,A.R.S Santa Cruz,Chorotega
+Guanacaste,Santa Cruz,Cuajiniquil,SCRU,57,350,A.R.S Santa Cruz,Chorotega
+Guanacaste,Santa Cruz,Diria,SCRU,57,351,A.R.S Santa Cruz,Chorotega
+Guanacaste,Santa Cruz,Cabo Velas,SCRU,57,352,A.R.S Santa Cruz,Chorotega
+Guanacaste,Santa Cruz,Tamarindo,SCRU,57,353,A.R.S Santa Cruz,Chorotega
+Alajuela,San Carlos,Cutris,SRPO,30,203,A.R.S Santa Rosa Pocosol,Huetar Norte
+Alajuela,San Carlos,Pocosol,SRPO,30,205,A.R.S Santa Rosa Pocosol,Huetar Norte
+Heredia,Santo Domingo,Santo Domingo,SDOM,47,297,A.R.S Santo Domingo,Central Norte
+Heredia,Santo Domingo,San Vicente,SDOM,47,298,A.R.S Santo Domingo,Central Norte
+Heredia,Santo Domingo,San Miguel,SDOM,47,299,A.R.S Santo Domingo,Central Norte
+Heredia,Santo Domingo,Paracito,SDOM,47,300,A.R.S Santo Domingo,Central Norte
+Heredia,Santo Domingo,Santo Tomás,SDOM,47,301,A.R.S Santo Domingo,Central Norte
+Heredia,Santo Domingo,Santa Rosa,SDOM,47,302,A.R.S Santo Domingo,Central Norte
+Heredia,Santo Domingo,Tures,SDOM,47,303,A.R.S Santo Domingo,Central Norte
+Heredia,Santo Domingo,Para,SDOM,47,304,A.R.S Santo Domingo,Central Norte
+Heredia,Sarapiquí,Puerto Viejo,SARA,54,328,A.R.S Sarapiquí,Central Norte
+Heredia,Sarapiquí,La Virgen,SARA,54,329,A.R.S Sarapiquí,Central Norte
+Heredia,Sarapiquí,Las Horquetas,SARA,54,330,A.R.S Sarapiquí,Central Norte
+Heredia,Sarapiquí,Llanuras Del Gaspar,SARA,54,331,A.R.S Sarapiquí,Central Norte
+Heredia,Sarapiquí,Cureña,SARA,54,332,A.R.S Sarapiquí,Central Norte
+Limón,Siquirres,Siquirres,SIQU,81,460,A.R.S Siquirres,Huetar Caribe
+Limón,Siquirres,Pacuarito,SIQU,81,461,A.R.S Siquirres,Huetar Caribe
+Limón,Siquirres,Florida,SIQU,81,462,A.R.S Siquirres,Huetar Caribe
+Limón,Siquirres,Germania,SIQU,81,463,A.R.S Siquirres,Huetar Caribe
+Limón,Siquirres,El Cairo,SIQU,81,464,A.R.S Siquirres,Huetar Caribe
+Limón,Siquirres,Alegría,SIQU,81,465,A.R.S Siquirres,Huetar Caribe
+San José,Central,Catedral,SURE,1,4,A.R.S Sureste Metropolitana,Central Sur
+San José,Central,Zapote,SURE,1,5,A.R.S Sureste Metropolitana,Central Sur
+San José,Central,San Francisco De Dos Rios,SURE,1,6,A.R.S Sureste Metropolitana,Central Sur
+San José,Central,San Sebastián,SURE,1,11,A.R.S Sureste Metropolitana,Central Sur
+Limón,Talamanca,Bratsi,TALA,82,466,A.R.S Talamanca,Huetar Caribe
+Limón,Talamanca,Sixaola,TALA,82,467,A.R.S Talamanca,Huetar Caribe
+Limón,Talamanca,Cahuita,TALA,82,468,A.R.S Talamanca,Huetar Caribe
+Limón,Talamanca,Telire,TALA,82,469,A.R.S Talamanca,Huetar Caribe
+Cartago,El Guarco,El Tejar,TEJAR,44,282,A.R.S Tejar del Guarco,Central Este
+Cartago,El Guarco,San Isidro,TEJAR,44,283,A.R.S Tejar del Guarco,Central Este
+Cartago,El Guarco,Tobosi,TEJAR,44,284,A.R.S Tejar del Guarco,Central Este
+Cartago,El Guarco,Patio De Agua,TEJAR,44,285,A.R.S Tejar del Guarco,Central Este
+San José,Tibás,San Juan,TIBA,13,81,A.R.S Tibás,Central Sur
+San José,Tibás,Cinco Esquinas,TIBA,13,82,A.R.S Tibás,Central Sur
+San José,Tibás,Anselmo Llorente,TIBA,13,83,A.R.S Tibás,Central Sur
+San José,Tibás,Leon XII,TIBA,13,84,A.R.S Tibás,Central Sur
+San José,Tibás,Colima,TIBA,13,85,A.R.S Tibás,Central Sur
+Guanacaste,Tilarán,Tilarán,TILA,62,371,A.R.S Tilarán,Chorotega
+Guanacaste,Tilarán,Quebrada Grande,TILA,62,372,A.R.S Tilarán,Chorotega
+Guanacaste,Tilarán,Tronadora,TILA,62,373,A.R.S Tilarán,Chorotega
+Guanacaste,Tilarán,Santa Rosa,TILA,62,374,A.R.S Tilarán,Chorotega
+Guanacaste,Tilarán,Líbano,TILA,62,375,A.R.S Tilarán,Chorotega
+Guanacaste,Tilarán,Tierras Morenas,TILA,62,376,A.R.S Tilarán,Chorotega
+Guanacaste,Tilarán,Arenal,TILA,62,377,A.R.S Tilarán,Chorotega
+Cartago,Jiménez,Juan Viñas,TURR,40,259,A.R.S Turrialba,Central Este
+Cartago,Jiménez,Tucurrique,TURR,40,260,A.R.S Turrialba,Central Este
+Cartago,Jiménez,Pejibaye,TURR,40,261,A.R.S Turrialba,Central Este
+Cartago,Turrialba,Turrialba,TURR,41,262,A.R.S Turrialba,Central Este
+Cartago,Turrialba,La Suiza,TURR,41,263,A.R.S Turrialba,Central Este
+Cartago,Turrialba,Peralta,TURR,41,264,A.R.S Turrialba,Central Este
+Cartago,Turrialba,Santa Cruz,TURR,41,265,A.R.S Turrialba,Central Este
+Cartago,Turrialba,Santa Teresita,TURR,41,266,A.R.S Turrialba,Central Este
+Cartago,Turrialba,Pavones,TURR,41,267,A.R.S Turrialba,Central Este
+Cartago,Turrialba,Tuis,TURR,41,268,A.R.S Turrialba,Central Este
+Cartago,Turrialba,Tayutic,TURR,41,269,A.R.S Turrialba,Central Este
+Cartago,Turrialba,Santa Rosa,TURR,41,270,A.R.S Turrialba,Central Este
+Cartago,Turrialba,Tres Equis,TURR,41,271,A.R.S Turrialba,Central Este
+Cartago,Turrialba,La Isabel,TURR,41,272,A.R.S Turrialba,Central Este
+Cartago,Turrialba,Chirripó,TURR,41,273,A.R.S Turrialba,Central Este
+Alajuela,Upala,Upala,UPAL,33,218,A.R.S Upala,Chorotega
+Alajuela,Upala,Aguas Claras,UPAL,33,219,A.R.S Upala,Chorotega
+Alajuela,Upala,San José o Pizote,UPAL,33,220,A.R.S Upala,Chorotega
+Alajuela,Upala,Bijagua,UPAL,33,221,A.R.S Upala,Chorotega
+Alajuela,Upala,Delicias,UPAL,33,222,A.R.S Upala,Chorotega
+Alajuela,Upala,Dos Rios,UPAL,33,223,A.R.S Upala,Chorotega
+Alajuela,Upala,Yolillal,UPAL,33,224,A.R.S Upala,Chorotega
+Alajuela,Upala,Canalete,UPAL,33,225,A.R.S Upala,Chorotega
+Alajuela,Sarchí,Sarchí Norte,VVEG,32,213,A.R.S Valverde Vega,Central Occidente
+Alajuela,Sarchí,Sarchí Sur,VVEG,32,214,A.R.S Valverde Vega,Central Occidente
+Alajuela,Sarchí,Toro Amarillo,VVEG,32,215,A.R.S Valverde Vega,Central Occidente
+Alajuela,Sarchí,San Pedro,VVEG,32,216,A.R.S Valverde Vega,Central Occidente
+Alajuela,Sarchí,Rodriguez,VVEG,32,217,A.R.S Valverde Vega,Central Occidente
+Alajuela,Zarcero,Zarcero,ZARC,31,206,A.R.S Zarcero,Central Occidente
+Alajuela,Zarcero,Laguna,ZARC,31,207,A.R.S Zarcero,Central Occidente
+Alajuela,Zarcero,Tapesco,ZARC,31,208,A.R.S Zarcero,Central Occidente
+Alajuela,Zarcero,Guadalupe,ZARC,31,209,A.R.S Zarcero,Central Occidente
+Alajuela,Zarcero,Palmira,ZARC,31,210,A.R.S Zarcero,Central Occidente
+Alajuela,Zarcero,Zapote,ZARC,31,211,A.R.S Zarcero,Central Occidente
+Alajuela,Zarcero,Brisas,ZARC,31,212,A.R.S Zarcero,Central Occidente

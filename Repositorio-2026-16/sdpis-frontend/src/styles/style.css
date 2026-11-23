@@ -1,0 +1,3062 @@
+/* ==========================================================================
+   SDPIS — Sistema de Denuncias de Productos de Interés Sanitario
+   Ministerio de Salud de Costa Rica
+   Hoja de estilos única para React (formulario público + portal institucional)
+   Basado en: estándares de diseño D01–D10, arquitectura del sistema y el
+   formulario de denuncia ya construido.
+   ========================================================================== */
+
+/* ==========================================================================
+   1. RAÍZ — VARIABLES CSS (colores, tipografía, espaciado, sombras, radios)
+   ========================================================================== */
+:root {
+    /* --- Colores primarios (D04) --- */
+    --color-navy: #021a53;
+    --color-blue: #002e7a;
+    --color-gold: #cfac65;
+    /* --- Colores secundarios (D05) --- */
+    --color-gray: #c1c5c8;
+    --color-blue-medium: #164687;
+    --color-white: #ffffff;
+    /* --- Tintes derivados (uso interno de componentes) --- */
+    --color-gold-soft: #f2e9d8;
+    --color-gray-soft: #eef0f2;
+    --color-bg: #f4f5f6;
+    /* --- Texto --- */
+    --color-ink: #152241;
+    --color-ink-muted: #5b6479;
+    --color-ink-invertido: #c9d2e6;
+    /* --- Estados semánticos (formularios y validación) --- */
+    --color-danger: #a13246;
+    --color-danger-soft: #f4e2e5;
+    --color-ok: #1e7a4c;
+    --color-ok-soft: #e3f2e9;
+    --color-amber: #8a6a1f;
+    --color-amber-soft: #fbeed9;
+    /* --- Badges de criticidad (valores institucionales fijos) --- */
+    --color-critico-alto: #dc2626;
+    --color-critico-alto-soft: #fce8e8;
+    --color-critico-medio: #8a6a1f;
+    --color-critico-medio-soft: #fbeed9;
+    --color-critico-bajo: #1e7a4c;
+    --color-critico-bajo-soft: #e3f2e9;
+    /* --- Tipografía (D08) --- */
+    --font-heading: var(--font-body);
+    --font-body: 'Inter', Arial, Helvetica, sans-serif;
+    --fs-h1: clamp(28px, 3.6vw, 48px);
+    --fs-h2: clamp(24px, 2.8vw, 36px);
+    --fs-h3: clamp(20px, 2.2vw, 28px);
+    --fs-body: 16px;
+    --fs-small: 14px;
+    --fs-caption: 14px;
+    /* --- Espaciado (tokens) --- */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-6: 32px;
+    --space-7: 40px;
+    --space-8: 48px;
+    /* --- Radios --- */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-pill: 999px;
+    /* --- Sombras --- */
+    --shadow-sm: 0 1px 4px rgba(2, 26, 83, 0.08);
+    --shadow-md: 0 2px 10px rgba(2, 26, 83, 0.1);
+    --shadow-lg: 0 12px 32px rgba(2, 26, 83, 0.22);
+    /* --- Elevación refinada (capas suaves, uso en tarjetas del formulario público) --- */
+    --shadow-card: 0 1px 2px rgba(2, 26, 83, 0.06), 0 8px 24px rgba(2, 26, 83, 0.07);
+    --shadow-card-hover: 0 2px 4px rgba(2, 26, 83, 0.08), 0 14px 32px rgba(2, 26, 83, 0.12);
+    --shadow-focus-gold: 0 0 0 4px rgba(207, 172, 101, 0.22);
+    /* --- Transiciones --- */
+    --transition: 0.2s ease-in-out;
+    --ease-suave: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    /* --- Capas (z-index) --- */
+    --z-sidebar: 100;
+    --z-panel: 200;
+    --z-modal: 300;
+    --z-toast: 400;
+    /* --- Layout --- */
+    --sidebar-width: 320px;
+}
+
+/* ==========================================================================
+   2. RESET Y BASE
+   ========================================================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background-color: var(--color-bg);
+    background-image: radial-gradient(circle, rgba(2, 26, 83, 0.045) 1px, transparent 1px);
+    background-size: 22px 22px;
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: var(--fs-body);
+    line-height: 1.5;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-navy);
+    margin: 0 0 var(--space-3);
+}
+
+h1 {
+    font-size: var(--fs-h1);
+}
+
+h2 {
+    font-size: var(--fs-h2);
+}
+
+h3 {
+    font-size: var(--fs-h3);
+}
+
+p {
+    margin: 0 0 var(--space-3);
+}
+
+.sub {
+    font-size: var(--fs-small);
+    color: var(--color-ink-muted);
+}
+
+a {
+    color: var(--color-blue-medium);
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+button {
+    font-family: inherit;
+}
+
+/* Foco visible accesible en todo elemento interactivo (heurística 1 y 5) */
+:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* ==========================================================================
+   3. LAYOUT GENERAL Y APP SHELL (portal institucional)
+   ========================================================================== */
+.app-shell {
+    display: flex;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.content-wrap {
+    padding: var(--space-6);
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* Barra superior interna: migas de pan, buscador y acciones rápidas */
+.topbar-interna {
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-gray-soft);
+    padding: var(--space-4) var(--space-6);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+/* Logo oficial del Ministerio en la esquina superior izquierda (D10). */
+.topbar-logo-zona {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+    .topbar-logo {
+        height: 36px;
+        width: auto;
+        object-fit: contain;
+    }
+
+    .topbar-interna .breadcrumbs {
+        margin-right: auto;
+    }
+
+.breadcrumbs {
+    font-size: var(--fs-small);
+    color: var(--color-ink-muted);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+    .breadcrumbs a {
+        color: var(--color-blue-medium);
+    }
+
+    .breadcrumbs .actual {
+        color: var(--color-ink);
+        font-weight: 600;
+    }
+
+.busqueda-rapida {
+    flex: 1;
+    max-width: 320px;
+    position: relative;
+}
+
+    .busqueda-rapida input {
+        width: 100%;
+        padding: 9px 12px 9px 34px;
+        border: 1px solid var(--color-gray);
+        border-radius: var(--radius-pill);
+        font-size: var(--fs-small);
+        background: var(--color-gray-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%235b6479' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E") no-repeat 12px center;
+    }
+
+.acciones-rapidas {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+/* Layout dividido: columna principal + columna lateral de reglas/historial */
+.layout-split {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--space-6);
+    align-items: start;
+}
+
+/* ==========================================================================
+   4. BARRA LATERAL IZQUIERDA (SIDEBAR INTERNO)
+   ========================================================================== */
+.sidebar {
+    width: var(--sidebar-width);
+    flex-shrink: 0;
+    background: var(--color-navy);
+    color: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sidebar);
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    min-height: 64px;
+}
+
+.sidebar-logo {
+    width: auto;
+    height: 40px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.sidebar-menu {
+    list-style: none;
+    margin: 0;
+    padding: var(--space-3) 0;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.menu-group-label {
+    font-size: 10.5px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+    font-weight: 700;
+    padding: var(--space-4) var(--space-4) var(--space-2);
+}
+
+.menu-item {
+    position: relative;
+}
+
+.menu-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: 11px var(--space-4);
+    color: rgba(255, 255, 255, 0.78);
+    border-left: 3px solid transparent;
+    cursor: pointer;
+    transition: background var(--transition), color var(--transition);
+}
+
+    .menu-link:hover {
+        background: var(--color-blue-medium);
+        color: var(--color-white);
+    }
+
+.menu-item.active .menu-link {
+    border-left-color: var(--color-gold);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--color-white);
+    font-weight: 600;
+}
+
+.menu-link .icono {
+    flex-shrink: 0;
+    display: flex;
+}
+
+.menu-label {
+    flex: 1;
+    font-size: 13.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.badge-counter {
+    background: var(--color-gold);
+    color: var(--color-navy);
+    border-radius: var(--radius-pill);
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 1px 7px;
+    flex-shrink: 0;
+}
+
+/* Submenús plegables */
+.menu-group .menu-link .chevron {
+    margin-left: auto;
+    transition: transform var(--transition);
+}
+
+.menu-group.open .menu-link .chevron {
+    transform: rotate(90deg);
+}
+
+.submenu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition);
+}
+
+.menu-group.open .submenu {
+    max-height: 400px;
+}
+
+.submenu .menu-link {
+    padding-left: var(--space-7);
+    font-size: 13px;
+}
+
+/* Pie del sidebar: perfil del usuario y cierre de sesión */
+.sidebar-footer {
+    padding: var(--space-4);
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.usuario-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+}
+
+.usuario-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--color-gold);
+    color: var(--color-navy);
+    font-weight: 700;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.usuario-info {
+    min-width: 0;
+}
+
+.usuario-nombre {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-white);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.usuario-rol {
+    font-size: 11.5px;
+    color: var(--color-ink-invertido);
+}
+
+.btn-logout {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: var(--color-white);
+    border-radius: var(--radius-sm);
+    padding: 9px;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background var(--transition);
+}
+
+    .btn-logout:hover {
+        background: var(--color-danger);
+        border-color: var(--color-danger);
+    }
+
+/* Botón hamburguesa (oculto en escritorio) */
+.btn-hamburger {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--color-navy);
+    cursor: pointer;
+    padding: var(--space-2);
+}
+
+/* Botón de cierre del sidebar (solo visible en móvil, junto al menú abierto) */
+.btn-sidebar-cerrar {
+    display: none;
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: var(--color-ink-muted);
+    cursor: pointer;
+    padding: var(--space-1);
+    font-size: 18px;
+    line-height: 1;
+}
+
+/* Capa que oscurece el contenido cuando el menú móvil está abierto */
+.sidebar-overlay {
+    display: none;
+}
+
+/* ==========================================================================
+   5. COMPONENTES INSTITUCIONALES (KPIs, badges, chips)
+   ========================================================================== */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+}
+
+.kpi-card {
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: var(--space-4) var(--space-5);
+    border-top: 3px solid var(--color-gold);
+}
+
+.kpi-label {
+    font-size: var(--fs-caption);
+    color: var(--color-ink-muted);
+    font-weight: 600;
+    margin-bottom: var(--space-1);
+}
+
+.kpi-value {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    color: var(--color-navy);
+    line-height: 1.1;
+}
+
+.kpi-delta {
+    font-size: 11.5px;
+    font-weight: 600;
+    margin-top: var(--space-1);
+}
+
+    .kpi-delta.positivo {
+        color: var(--color-ok);
+    }
+
+    .kpi-delta.negativo {
+        color: var(--color-danger);
+    }
+
+/* Tarjeta genérica de contenido (portal interno) */
+.card {
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    margin-bottom: var(--space-5);
+    overflow: hidden;
+    border-top: 3px solid var(--color-gold);
+    transition: box-shadow var(--ease-suave);
+}
+
+.card-head {
+    padding: var(--space-4) var(--space-5);
+    border-bottom: 1px solid var(--color-gray-soft);
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+    .card-head .num {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: linear-gradient(160deg, var(--color-navy), var(--color-blue));
+        color: var(--color-gold);
+        font-family: var(--font-heading);
+        font-weight: 700;
+        font-size: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .card-head h2, .card-head h3 {
+        font-size: 19px;
+        margin: 0;
+    }
+
+    .card-head .subtitulo {
+        font-size: var(--fs-caption);
+        color: var(--color-ink-muted);
+        margin-top: 1px;
+    }
+
+.card-body {
+    padding: var(--space-6);
+}
+
+/* Confirmación de denuncia (HU-005) */
+.confirmacion-denuncia__body {
+    text-align: center;
+    padding: var(--space-8) var(--space-6);
+}
+
+    .confirmacion-denuncia__icono {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto var(--space-5);
+        border-radius: 50%;
+        background: var(--color-ok-soft);
+        color: var(--color-ok);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .confirmacion-denuncia__icono svg {
+            width: 32px;
+            height: 32px;
+        }
+
+    .confirmacion-denuncia__body h2 {
+        color: var(--color-navy);
+        margin: 0 0 var(--space-3);
+    }
+
+    .confirmacion-denuncia__texto {
+        color: var(--color-ink-muted);
+        max-width: 440px;
+        margin: 0 auto var(--space-6);
+    }
+
+    .confirmacion-denuncia__numero {
+        background: var(--color-gray-soft);
+        border: 1px dashed var(--color-gray);
+        border-radius: var(--radius-md);
+        padding: var(--space-5);
+        max-width: 360px;
+        margin: 0 auto var(--space-5);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-2);
+    }
+
+        .confirmacion-denuncia__numero-etiqueta {
+            font-size: var(--fs-caption);
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--color-ink-muted);
+            font-weight: 700;
+        }
+
+        .confirmacion-denuncia__numero-valor {
+            font-family: var(--font-heading);
+            font-size: var(--fs-h2);
+            color: var(--color-navy);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            overflow-wrap: anywhere;
+        }
+
+        .confirmacion-denuncia__copiar {
+            margin-top: var(--space-2);
+            padding: 8px 18px;
+            font-size: 12.5px;
+        }
+
+    .confirmacion-denuncia__nota {
+        font-size: var(--fs-small);
+        color: var(--color-ink-muted);
+        margin: 0;
+    }
+
+        .confirmacion-denuncia__banner-correo {
+        max-width: 440px;
+        margin: var(--space-5) auto 0;
+        text-align: left;
+    }
+
+/* Badges de criticidad */
+.badge-criticidad {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    border-radius: var(--radius-pill);
+    font-size: var(--fs-caption);
+    font-weight: 700;
+}
+
+    .badge-criticidad.alto {
+        background: var(--color-critico-alto-soft);
+        color: var(--color-critico-alto);
+    }
+
+    .badge-criticidad.medio {
+        background: var(--color-critico-medio-soft);
+        color: var(--color-critico-medio);
+    }
+
+    .badge-criticidad.bajo {
+        background: var(--color-critico-bajo-soft);
+        color: var(--color-critico-bajo);
+    }
+
+/* Estado de la denuncia */
+.badge-estado {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    border-radius: var(--radius-pill);
+    font-size: var(--fs-caption);
+    font-weight: 700;
+}
+
+    .badge-estado.pendiente {
+        background: var(--color-gray-soft);
+        color: var(--color-ink-muted);
+    }
+
+    .badge-estado.en-tiempo {
+        background: var(--color-ok-soft);
+        color: var(--color-ok);
+    }
+
+    .badge-estado.en-revision {
+        background: #eef2f9;
+        color: var(--color-blue-medium);
+    }
+
+    .badge-estado.finalizado {
+        background: var(--color-gray-soft);
+        color: var(--color-navy);
+    }
+
+/* Chip de plazo */
+.plazo-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px;
+    border-radius: var(--radius-pill);
+    font-size: var(--fs-caption);
+    font-weight: 700;
+}
+
+    .plazo-chip.en-tiempo {
+        background: var(--color-ok-soft);
+        color: var(--color-ok);
+    }
+
+    .plazo-chip.proximo {
+        background: var(--color-amber-soft);
+        color: var(--color-amber);
+    }
+
+    .plazo-chip.vencido {
+        background: var(--color-critico-alto-soft);
+        color: var(--color-critico-alto);
+    }
+
+    .plazo-chip.urgente {
+        animation: pulso-urgente 1.6s infinite;
+    }
+
+@keyframes pulso-urgente {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.35);
+    }
+
+    50% {
+        box-shadow: 0 0 0 4px rgba(220, 38, 38, 0);
+    }
+}
+
+/* Tarjeta de selección de funcionario (asignación/reasignación) */
+.tarjeta-funcionario {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    border: 1.5px solid var(--color-gray);
+    border-radius: var(--radius-md);
+    padding: var(--space-3) var(--space-4);
+    cursor: pointer;
+    transition: border-color var(--transition), background var(--transition);
+}
+
+    .tarjeta-funcionario:hover {
+        border-color: var(--color-blue-medium);
+    }
+
+    .tarjeta-funcionario.seleccionado {
+        border-color: var(--color-gold);
+        background: var(--color-gold-soft);
+    }
+
+    .tarjeta-funcionario.no-disponible {
+        opacity: 0.55;
+        cursor: not-allowed;
+    }
+
+    .tarjeta-funcionario .nombre {
+        font-weight: 600;
+        font-size: 13.5px;
+    }
+
+    .tarjeta-funcionario .carga-badge {
+        margin-left: auto;
+        font-size: 11.5px;
+        font-weight: 700;
+        color: var(--color-ink-muted);
+        background: var(--color-gray-soft);
+        border-radius: var(--radius-pill);
+        padding: 2px 9px;
+    }
+
+/* Banner informativo */
+.banner-info {
+    display: flex;
+    gap: var(--space-2);
+    background: #eef2f9;
+    border: 1px solid #d7deea;
+    border-radius: var(--radius-sm);
+    padding: var(--space-3) var(--space-4);
+    font-size: 12.5px;
+    color: var(--color-blue);
+    line-height: 1.5;
+    margin-bottom: var(--space-5);
+    margin-top: var(--space-5);
+}
+
+    .banner-info svg {
+        flex-shrink: 0;
+        margin-top: 1px;
+    }
+
+/* ==========================================================================
+   6. FORMULARIOS Y FILTROS
+   ========================================================================== */
+.field {
+    margin-bottom: var(--space-4);
+}
+
+    .field label {
+        display: block;
+        font-size: var(--fs-small);
+        font-weight: 600;
+        color: var(--color-ink);
+        margin-bottom: var(--space-2);
+    }
+
+        .field label .req {
+            color: var(--color-danger);
+            margin-left: 2px;
+        }
+
+        .field label .opt {
+            color: var(--color-ink-muted);
+            font-weight: 400;
+            font-size: 13px;
+            margin-left: 6px;
+        }
+
+    .field .help {
+        font-size: 13px;
+        color: var(--color-ink-muted);
+        margin-top: 5px;
+    }
+
+    .field .error-msg {
+        font-size: 14px;
+        color: var(--color-danger);
+        margin-top: 5px;
+        font-weight: 600;
+    }
+.field-label-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.ayuda-contextual__boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1px solid var(--color-blue-medium);
+    background: var(--color-white);
+    color: var(--color-blue-medium);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+    .ayuda-contextual__boton:hover,
+    .ayuda-contextual__boton[aria-expanded='true'] {
+        background: var(--color-blue-medium);
+        color: var(--color-white);
+    }
+
+    .ayuda-contextual__boton:focus-visible {
+        outline: 2px solid var(--color-gold);
+        outline-offset: 2px;
+    }
+
+.ayuda-contextual__panel {
+    position: fixed;
+    z-index: var(--z-panel);
+    width: 220px;
+    max-width: calc(100vw - 24px);
+    background: var(--color-navy);
+    color: var(--color-white);
+    font-size: 12.5px;
+    font-weight: 400;
+    line-height: 1.4;
+    padding: 10px 12px;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 6px 16px rgba(2, 26, 83, 0.25);
+}
+
+input[type='text'],
+input[type='email'],
+input[type='tel'],
+input[type='date'],
+input[type='number'],
+select,
+textarea {
+    width: 100%;
+    border: 1px solid var(--color-gray);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    font-size: 13.5px;
+    font-family: inherit;
+    color: var(--color-ink);
+    background: var(--color-white);
+    transition: border-color var(--transition), outline var(--transition);
+}
+
+textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+    input::placeholder, textarea::placeholder {
+        color: #a7adba;
+    }
+
+    input:focus, select:focus, textarea:focus {
+        outline: 2px solid var(--color-gold);
+        outline-offset: 1px;
+        border-color: var(--color-gold);
+    }
+
+    input:disabled, select:disabled, textarea:disabled {
+        background: var(--color-gray-soft);
+        color: var(--color-ink-muted);
+        cursor: not-allowed;
+    }
+
+.field.error input, .field.error select, .field.error textarea {
+    border-color: var(--color-danger);
+    background: var(--color-danger-soft);
+}
+
+.row2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+}
+
+.row3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--space-4);
+}
+
+/* Toggle Sí/No */
+.toggle-group {
+    display: flex;
+    gap: var(--space-3);
+}
+
+.toggle-btn {
+    flex: 1;
+    text-align: center;
+    padding: 10px 12px;
+    border-radius: var(--radius-sm);
+    border: 1.5px solid var(--color-gray);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-ink-muted);
+    cursor: pointer;
+    background: var(--color-white);
+    transition: all var(--transition);
+}
+
+    .toggle-btn.selected.si {
+        border-color: var(--color-danger);
+        color: var(--color-danger);
+        background: var(--color-danger-soft);
+    }
+
+    .toggle-btn.selected.no {
+        border-color: var(--color-ok);
+        color: var(--color-ok);
+        background: var(--color-ok-soft);
+    }
+
+.conditional-box {
+    margin-top: var(--space-3);
+    padding: var(--space-4);
+    background: #fafbfd;
+    border: 1px dashed var(--color-gray);
+    border-radius: var(--radius-sm);
+}
+
+/* Barra de filtros (dashboard, reportes, listados internos) */
+.filters-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: var(--space-4);
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: var(--space-4) var(--space-5);
+    margin-bottom: var(--space-5);
+}
+
+    .filters-bar .field {
+        margin-bottom: 0;
+        min-width: 160px;
+        flex: 1;
+    }
+
+.filters-actions {
+    display: flex;
+    gap: var(--space-2);
+}
+
+/* Botones genéricos, compartidos por el portal interno y el formulario público */
+.btn-primary {
+    background: var(--color-gold);
+    color: var(--color-navy);
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 12px 26px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    transition: background var(--transition), transform var(--transition);
+}
+
+    .btn-primary:hover {
+        background: var(--color-gold);
+        box-shadow: var(--shadow-md);
+        transform: translateY(-1px);
+    }
+
+    .btn-primary:disabled {
+        background: var(--color-gray);
+        color: var(--color-ink-muted);
+        cursor: not-allowed;
+        box-shadow: none;
+    }
+
+.btn-secondary {
+    background: var(--color-white);
+    border: 1.5px solid var(--color-gray);
+    color: var(--color-ink);
+    border-radius: var(--radius-sm);
+    padding: 11px 22px;
+    font-size: 13.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: border-color var(--transition), color var(--transition), transform var(--transition);
+}
+
+    .btn-secondary:hover {
+        border-color: var(--color-blue-medium);
+        color: var(--color-blue-medium);
+        transform: translateY(-1px);
+    }
+
+.btn-danger {
+    background: var(--color-danger);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 11px 22px;
+    font-size: 13.5px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   7. TABLAS DE DATOS Y LISTAS
+   ========================================================================== */
+.denuncias-table-wrap {
+    overflow-x: auto;
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+table.denuncias-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    min-width: 640px;
+}
+
+.denuncias-table thead th {
+    background: var(--color-navy);
+    color: var(--color-white);
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.6px;
+    font-weight: 700;
+    padding: 12px 14px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.denuncias-table tbody td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--color-gray-soft);
+    color: var(--color-ink);
+}
+
+.denuncias-table tbody tr {
+    transition: background var(--transition);
+}
+
+    .denuncias-table tbody tr:hover {
+        background: var(--color-gold-soft);
+    }
+
+    .denuncias-table tbody tr.fila-vencida {
+        background: var(--color-danger-soft);
+    }
+
+    .denuncias-table tbody tr.fila-critica {
+        border-left: 4px solid var(--color-critico-alto);
+    }
+
+    .denuncias-table tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+/* Vista de tarjetas para móvil (reemplaza la tabla) */
+.lista-tarjetas {
+    display: none;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.tarjeta-denuncia {
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: var(--space-4);
+}
+
+.tarjeta-denuncia-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-2);
+}
+
+.tarjeta-denuncia .numero {
+    font-weight: 700;
+    color: var(--color-navy);
+    font-size: 13.5px;
+}
+
+.tarjeta-denuncia dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 4px var(--space-3);
+    font-size: 12.5px;
+    margin: 0;
+}
+
+.tarjeta-denuncia dt {
+    color: var(--color-ink-muted);
+}
+
+.tarjeta-denuncia dd {
+    margin: 0;
+}
+
+/* ==========================================================================
+   8. MODALES, PANELES LATERALES Y TOASTS
+   ========================================================================== */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(2, 26, 83, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4);
+    z-index: var(--z-modal);
+}
+
+.modal-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    max-width: 520px;
+    width: 100%;
+    padding: var(--space-6);
+    box-shadow: var(--shadow-lg);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--space-4);
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-ink-muted);
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+}
+
+/* Panel lateral deslizante (asignación, reasignación, detalle) */
+.panel-lateral {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 380px;
+    max-width: 92vw;
+    background: var(--color-white);
+    box-shadow: var(--shadow-lg);
+    transform: translateX(100%);
+    transition: transform var(--transition);
+    z-index: var(--z-panel);
+    display: flex;
+    flex-direction: column;
+}
+
+    .panel-lateral.visible {
+        transform: translateX(0);
+    }
+
+.panel-lateral-header {
+    padding: var(--space-5);
+    border-bottom: 1px solid var(--color-gray-soft);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.panel-lateral-body {
+    padding: var(--space-5);
+    overflow-y: auto;
+    flex: 1;
+}
+
+.panel-lateral-footer {
+    padding: var(--space-4) var(--space-5);
+    border-top: 1px solid var(--color-gray-soft);
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-3);
+}
+
+/* Notificación tipo toast */
+.toast {
+    position: fixed;
+    bottom: var(--space-5);
+    right: var(--space-5);
+    background: var(--color-navy);
+    color: var(--color-white);
+    padding: 14px 20px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transform: translateY(16px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    z-index: var(--z-toast);
+    max-width: 360px;
+}
+
+    .toast.show {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .toast.exito {
+        border-left: 4px solid var(--color-ok);
+    }
+
+    .toast.error {
+        border-left: 4px solid var(--color-critico-alto);
+    }
+
+    .toast.aviso {
+        border-left: 4px solid var(--color-gold);
+    }
+
+/* ==========================================================================
+   9. FOOTER INSTITUCIONAL (portal interno)
+   ========================================================================== */
+.footer-institucional {
+    background: var(--color-navy);
+    color: var(--color-ink-invertido);
+    padding: var(--space-4) var(--space-6);
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    font-size: 11.5px;
+}
+
+    .footer-institucional .footer-texto {
+        text-align: center;
+    }
+
+    .footer-institucional a {
+        color: var(--color-gold);
+    }
+
+/* ==========================================================================
+   10. FORMULARIO PÚBLICO DE DENUNCIA (sin autenticación)
+   ========================================================================== */
+.topbar-publica {
+    background: var(--color-navy);
+    color: var(--color-white);
+    padding: 14px 28px;
+    border-bottom: 3px solid var(--color-gold);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.brand-text .eyebrow {
+    font-size: 10.5px;
+    letter-spacing: 1.6px;
+    color: var(--color-gold);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.brand-text .brand-word {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--color-white);
+    line-height: 1.2;
+}
+
+.brand-text .sub {
+    font-size: 12px;
+    color: var(--color-ink-invertido);
+    margin-top: 1px;
+}
+
+.public-chip {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--color-ink-invertido);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 6px 12px;
+    border-radius: var(--radius-pill);
+}
+
+.hero-publico {
+    background: radial-gradient(ellipse at top, var(--color-blue) 0%, var(--color-navy) 65%);
+    color: var(--color-white);
+    padding: var(--space-7) var(--space-5) var(--space-8);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+    .hero-publico::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(circle, rgba(207, 172, 101, 0.12) 1px, transparent 1px);
+        background-size: 26px 26px;
+        pointer-events: none;
+    }
+
+    .hero-publico > * {
+        position: relative;
+    }
+
+    .hero-publico__logos {
+        display: flex;
+        align-items: start;
+        justify-content: center;
+        gap: var(--space-4);
+        margin-bottom: var(--space-5);
+    }
+
+    .hero-publico__logos img.hero-publico__logo {
+            height: 150px;
+            width: auto;
+            max-height: 150px;
+            max-width: none;
+            object-fit: contain;
+            display: inline-block;
+            filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25));
+            border-radius: 8px;
+    }
+
+
+
+    .hero-publico .eyebrow {
+        font-size: 11px;
+        letter-spacing: 2.4px;
+        text-transform: uppercase;
+        color: var(--color-gold);
+        font-weight: 700;
+    }
+
+    .hero-publico h1 {
+        color: var(--color-white);
+        font-size: 40px;
+        margin: var(--space-2) 0 0;
+        position: relative;
+        display: inline-block;
+        padding-bottom: var(--space-3);
+    }
+
+        .hero-publico h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1000px;
+            height: 3px;
+            border-radius: var(--radius-pill);
+            background: var(--color-gold);
+        }
+
+    .hero-publico p {
+        font-size: 16px;
+        color: var(--color-ink-invertido);
+        max-width: 980px;
+        margin: var(--space-2) auto 0;
+    }
+
+/* Indicador de pasos del formulario */
+.progress-wrap {
+    max-width: 820px;
+    margin: calc(-1 * var(--space-6)) auto 0;
+    padding: 0 var(--space-5);
+}
+
+.progress-track {
+    background: var(--color-white);
+    border-radius: var(--radius-pill);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    padding: var(--space-4) var(--space-5);
+    justify-content: space-between;
+    gap: var(--space-1);
+    position: relative;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    flex: 1;
+    position: relative;
+}
+
+    .step:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        top: 14px;
+        left: 50%;
+        width: 100%;
+        height: 2px;
+        background: var(--color-gray-soft);
+        z-index: 0;
+        transition: background var(--ease-suave);
+    }
+
+    .step.done:not(:last-child)::after {
+        background: var(--color-ok);
+    }
+
+.step-dot {
+    width: 29px;
+    height: 29px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    background: var(--color-white);
+    color: var(--color-ink-muted);
+    border: 2px solid var(--color-gray);
+    position: relative;
+    z-index: 1;
+    transition: background var(--ease-suave), border-color var(--ease-suave), color var(--ease-suave), box-shadow var(--ease-suave), transform var(--ease-suave);
+}
+
+.step.done .step-dot {
+    background: var(--color-ok);
+    border-color: var(--color-ok);
+    color: var(--color-white);
+}
+
+.step.active .step-dot {
+    background: var(--color-gold);
+    border-color: var(--color-gold);
+    color: var(--color-navy);
+    box-shadow: var(--shadow-focus-gold);
+    transform: scale(1.08);
+}
+
+.step-label {
+    font-size: 14px;
+    color: var(--color-ink-muted);
+    text-align: center;
+    font-weight: 600;
+    line-height: 1.2;
+    transition: color var(--ease-suave);
+}
+
+.step.active .step-label {
+    color: var(--color-navy);
+}
+
+.step.done .step-label {
+    color: var(--color-ok);
+}
+
+.main-publico {
+    max-width: 1100px;
+    margin: var(--space-6) auto 60px;
+    padding: 0 var(--space-5);
+}
+
+    .main-publico > section + section {
+        margin-top: var(--space-7);
+    }
+
+.section-divider-label {
+    font-size: 10.5px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+    font-weight: 700;
+    margin: var(--space-6) 0 var(--space-3) 2px;
+}
+
+/* Bloque repetible de producto (HU-004) */
+.producto-block {
+    border: 1px solid var(--color-gray-soft);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-4);
+    overflow: hidden;
+}
+
+.producto-block-head {
+    background: #fafbfd;
+    padding: var(--space-3) var(--space-4);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--color-gray-soft);
+}
+
+    .producto-block-head .tag {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--color-navy);
+        background: var(--color-gold-soft);
+        padding: 3px 10px;
+        border-radius: var(--radius-pill);
+    }
+
+    .producto-block-head .remove {
+        font-size: 12px;
+        color: var(--color-danger);
+        cursor: pointer;
+        font-weight: 600;
+        border: none;
+        background: none;
+    }
+
+.producto-block-body {
+    padding: var(--space-4);
+}
+
+.subsection-lbl {
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--color-ink-muted);
+    font-weight: 700;
+    margin: var(--space-4) 0 var(--space-3);
+    display: block;
+}
+
+    .subsection-lbl:first-child {
+        margin-top: 0;
+    }
+
+.add-producto-btn {
+    width: 100%;
+    border: 2px dashed var(--color-gray);
+    background: #fafbfd;
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    color: var(--color-blue);
+    font-weight: 700;
+    font-size: 13.5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    transition: border-color var(--transition), color var(--transition);
+}
+
+    .add-producto-btn:hover {
+        border-color: var(--color-gold);
+        color: var(--color-navy);
+    }
+
+/* Lista de motivos de denuncia */
+.motivo-checklist {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+}
+
+.motivo-check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: 9px 12px;
+    border: 1.5px solid var(--color-gray);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: border-color var(--transition), background var(--transition);
+}
+
+    .motivo-check-item.selected {
+        border-color: var(--color-navy);
+        background: #eef2f9;
+    }
+
+.motivo-check-box {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    border: 2px solid var(--color-gray);
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+}
+
+.motivo-check-item.selected .motivo-check-box {
+    border-color: var(--color-navy);
+    background: var(--color-navy);
+    color: var(--color-white);
+}
+
+.motivo-check-text {
+    font-size: 14px;
+    color: var(--color-ink);
+    line-height: 1.4;
+}
+
+/* Evidencias adjuntas (HU-003) */
+.dropzone {
+    border: 2px dashed var(--color-gray);
+    border-radius: var(--radius-md);
+    padding: var(--space-5);
+    text-align: center;
+    background: #fafbfd;
+}
+
+    .dropzone svg {
+        color: var(--color-ink-muted);
+        margin-bottom: var(--space-2);
+    }
+
+    .dropzone .txt {
+        font-size: 13px;
+        color: var(--color-ink-muted);
+    }
+
+        .dropzone .txt strong {
+            color: var(--color-blue);
+        }
+
+    .dropzone .formats {
+        font-size: 11px;
+        color: var(--color-ink-muted);
+        margin-top: 4px;
+    }
+
+.evidencia-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: 11px 14px;
+    border: 1px solid var(--color-gray-soft);
+    border-radius: var(--radius-sm);
+    background: #fafbfd;
+    margin-top: var(--space-3);
+}
+
+.evidencia-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+    .evidencia-icon.foto {
+        background: #e7edf7;
+        color: var(--color-blue);
+    }
+
+    .evidencia-icon.doc {
+        background: var(--color-gold-soft);
+        color: var(--color-amber);
+    }
+
+.evidencia-name {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--color-ink);
+}
+
+.evidencia-meta {
+    font-size: 11px;
+    color: var(--color-ink-muted);
+    margin-top: 2px;
+}
+
+    .evidencia-meta .tipo-tag {
+        background: var(--color-gray-soft);
+        color: var(--color-ink-muted);
+        padding: 1px 7px;
+        border-radius: var(--radius-pill);
+        font-weight: 700;
+        font-size: 12px;
+        margin-right: 6px;
+    }
+
+.evidencia-remove {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--color-danger);
+    cursor: pointer;
+    font-weight: 600;
+    border: none;
+    background: none;
+}
+
+.evidencia-fecha-row {
+    margin-top: var(--space-4);
+}
+
+/* Selección del tipo de trámite (anónima / confidencial) */
+.tramite-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+}
+
+.tramite-card {
+    border: 2px solid var(--color-gray);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    cursor: pointer;
+    position: relative;
+    transition: border-color var(--transition), background var(--transition);
+}
+
+    .tramite-card h3 {
+        font-size: 14.5px;
+        margin: 0 0 6px;
+        color: var(--color-ink);
+        font-family: var(--font-body);
+        font-weight: 700;
+    }
+
+    .tramite-card p {
+        font-size: 12px;
+        color: var(--color-ink-muted);
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    .tramite-card.selected {
+        border-color: var(--color-gold);
+        background: var(--color-gold-soft);
+    }
+
+    .tramite-card .radio-dot {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        border: 2px solid var(--color-gray);
+        position: absolute;
+        top: 14px;
+        right: 14px;
+    }
+
+    .tramite-card.selected .radio-dot {
+        border-color: var(--color-gold);
+        background: radial-gradient(circle, var(--color-navy) 0 40%, var(--color-gold) 41% 100%);
+    }
+
+/* Paso de revisión final (resumen antes de enviar) */
+.card-head-acciones {
+    margin-left: auto;
+}
+
+.btn-editar-seccion {
+    background: none;
+    border: none;
+    color: var(--color-blue-medium);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 4px 8px;
+    flex-shrink: 0;
+}
+
+    .btn-editar-seccion:hover {
+        text-decoration: underline;
+    }
+
+.resumen-lista {
+    display: grid;
+    grid-template-columns: minmax(160px, 220px) 1fr;
+    gap: var(--space-2) var(--space-4);
+    margin: 0;
+}
+
+    .resumen-lista dt {
+        font-size: var(--fs-small);
+        color: var(--color-ink-muted);
+        font-weight: 700;
+    }
+
+    .resumen-lista dd {
+        margin: 0;
+        font-size: var(--fs-small);
+        color: var(--color-ink);
+        word-break: break-word;
+    }
+
+.resumen-producto {
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid var(--color-gray-soft);
+}
+
+    .resumen-producto:first-child {
+        padding-top: 0;
+    }
+
+    .resumen-producto:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+.resumen-motivos {
+    margin: 0;
+    padding-left: var(--space-4);
+}
+
+    .resumen-motivos li {
+        font-size: var(--fs-small);
+        margin-bottom: 2px;
+    }
+
+.form-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--space-2);
+}
+
+/* ==========================================================================
+   FOOTER PÚBLICO (Distribución Horizontal)
+   ========================================================================== */
+.footer-publico {
+    background-color: var(--color-navy);
+    color: #ffffff;
+    padding: var(--space-6) var(--space-6);
+    font-size: 12.5px;
+    line-height: 1.5;
+    margin-top: var(--space-5);
+    width: 100%;
+}
+
+/* Distribución horizontal a lo largo del footer */
+.footer-publico__contenido {
+    width: 100%;
+    max-width: 1300px; /* Ancho amplio para extender los elementos */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row; /* Fuerza alineación horizontal */
+    justify-content: space-between; /* Distribuye espacio entre las 4 columnas */
+    align-items: flex-start;
+    gap: var(--space-5);
+}
+
+/* Columna 1: Logo */
+.footer-publico__col-logo .footer-publico__logo {
+    height: 65px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* Columnas de Texto */
+.footer-publico__col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.footer-publico__titulo {
+    color: var(--color-gold);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+}
+
+.footer-publico__col p {
+    margin: 0 0 4px 0;
+    color: #d1d5db;
+    font-size: 12px;
+}
+
+/* Accesos Rápidos */
+.footer-publico__links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.footer-publico__links li {
+    margin-bottom: 4px;
+}
+
+.footer-publico__links a {
+    color: #d1d5db;
+    text-decoration: none;
+    font-size: 12px;
+    transition: color var(--transition);
+}
+
+.footer-publico__links a:hover {
+    color: var(--color-gold);
+    text-decoration: underline;
+}
+
+/* Columna 4: Redes Sociales */
+.footer-publico__col-redes {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 4px;
+}
+
+.footer-publico__red {
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color var(--transition), transform var(--transition);
+}
+
+.footer-publico__red:hover {
+    color: var(--color-gold);
+    transform: translateY(-2px);
+}
+
+.footer-publico__red svg {
+    width: 26px;
+    height: 26px;
+}
+
+.footer-publico__redes-separador {
+    display: inline-block;
+    width: 1px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Adaptabilidad a dispositivos móviles */
+@media (max-width: 800px) {
+    .footer-publico__contenido {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-publico__col {
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-publico__links {
+        text-align: center;
+    }
+}
+
+/* ==========================================================================
+   11. MEDIA QUERIES Y ADAPTABILIDAD MÓVIL (RNF-014)
+   ========================================================================== */
+@media (max-width: 900px) {
+    .btn-hamburger {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--color-white);
+        border: 1px solid var(--color-gray);
+        border-radius: var(--radius-sm);
+        box-shadow: var(--shadow-sm);
+        padding: 8px 10px;
+        font-size: 18px;
+        line-height: 1;
+    }
+
+    .btn-hamburger:hover {
+        border-color: var(--color-blue-medium);
+    }
+
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 260px;
+        height: 100vh;
+        height: 100dvh;
+        transform: translateX(-100%);
+        transition: transform var(--transition);
+    }
+
+        .sidebar.abierto {
+            transform: translateX(0);
+        }
+
+        .sidebar.abierto .sidebar-header {
+            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.14);
+        }
+
+    /* en móvil el sidebar funciona como off-canvas */
+
+    /* El logo no debe desbordar la cabecera; se compacta para dejar espacio a la X */
+    .sidebar.abierto .sidebar-header .sidebar-logo {
+        height: 64px;
+    }
+
+    /* Botón de cierre y capa oscura: solo visibles con el menú móvil abierto */
+    .sidebar .btn-sidebar-cerrar {
+        display: none;
+    }
+
+    .sidebar.abierto .btn-sidebar-cerrar {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn-sidebar-cerrar:hover {
+        color: var(--color-navy);
+    }
+
+    .sidebar-overlay {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(2, 26, 83, 0.5);
+        z-index: calc(var(--z-sidebar) - 1);
+        animation: fadeIn 0.2s ease-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    .layout-split {
+        grid-template-columns: 1fr;
+    }
+
+    .content-wrap {
+        padding: var(--space-4);
+    }
+
+    .topbar-interna {
+        padding: var(--space-3) var(--space-4);
+    }
+
+    .tramite-options {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .row2, .row3 {
+        grid-template-columns: 1fr;
+    }
+
+    .kpi-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+
+    .filters-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+        .filters-bar .field {
+            min-width: 0;
+        }
+
+    /* La tabla de denuncias se reemplaza por tarjetas apiladas */
+    .denuncias-table-wrap {
+        display: none;
+    }
+
+    .lista-tarjetas {
+        display: flex;
+    }
+
+    .panel-lateral {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .footer-institucional {
+        flex-direction: column;
+        text-align: center;
+    }
+
+        .footer-institucional .footer-texto {
+            text-align: center;
+        }
+
+    .hero-publico {
+        padding: var(--space-5) var(--space-4) var(--space-6);
+    }
+
+    .step-label {
+        display: none;
+    }
+    /* en pantallas muy pequeñas solo se ven los círculos de paso */
+}
+
+/* Grupo izquierdo del form-nav (Cancelar + Atrás) y salida de emergencia
+   del formulario (heurística 3: control y libertad del usuario). */
+.form-nav__grupo-izquierda {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.btn-texto-peligro {
+    background: transparent;
+    border: 1.5px solid transparent;
+    color: var(--color-ink-muted);
+    border-radius: var(--radius-sm);
+    padding: 11px 18px;
+    font-size: 13.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background var(--transition), border-color var(--transition), color var(--transition);
+}
+
+.btn-texto-peligro {
+    background: var(--color-white);
+    border: 1.5px solid var(--color-danger);
+    color: var(--color-danger);
+    border-radius: var(--radius-sm);
+    padding: 11px 18px;
+    font-size: 13.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background var(--transition), border-color var(--transition), color var(--transition), transform var(--transition);
+}
+
+.btn-texto-peligro:hover {
+        background: var(--color-danger);
+        border-color: var(--color-danger);
+        color: var(--color-white);
+        transform: translateY(-1px);
+}
+
+/* Recuadro de ayuda siempre visible para campos de texto libre
+   (componente AyudaCampo). Va entre la etiqueta y el campo. */
+.ayuda-campo {
+    display: flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+    background: #eef2f9;
+    border: 1px solid #d7deea;
+    border-left: 4px solid var(--color-gold);
+    border-radius: var(--radius-sm);
+    padding: var(--space-3) var(--space-4);
+    margin-bottom: var(--space-3);
+    color: var(--color-ink);
+    font-size: 11.5px;
+    line-height: 1.5;
+}
+
+.ayuda-campo__icono {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--color-blue-medium);
+}
+
+.ayuda-campo__contenido {
+    min-width: 0;
+}
+
+    .ayuda-campo__contenido p {
+        margin: 0 0 var(--space-2);
+        font-size: inherit;
+    }
+
+    .ayuda-campo__contenido > :last-child {
+        margin-bottom: 0;
+    }
+
+.ayuda-campo__titulo {
+    font-weight: 700;
+    color: var(--color-navy);
+}
+
+.ayuda-campo__contenido ul {
+    margin: 0 0 var(--space-2);
+    padding-left: var(--space-5);
+}
+
+.ayuda-campo__contenido li {
+    margin-bottom: 2px;
+}
+
+.ayuda-campo__ejemplo {
+    color: var(--color-ink-muted);
+    font-style: italic;
+}
+
+/* ==========================================================================
+   12. PÁGINA PRINCIPAL (LANDING PÚBLICA)
+   Clases exclusivas del home público, con prefijo "pp-" para no afectar el
+   resto del sistema. El resto del contenido (hero-publico, card, row2/row3,
+   btn-primary/secondary, banner-info, progress-*, footer-publico) reutiliza
+   tal cual las clases ya definidas arriba, para mantener consistencia (D02).
+   ========================================================================== */
+
+/* Transición de salida/entrada entre vistas (ver hook useNavegacionAnimada
+   en App.jsx). Un fundido con leve zoom y desenfoque, para que cambiar de
+   página se sienta como un corte de escena y no como un salto instantáneo.
+   La regla de prefers-reduced-motion de la sección 2 ya la desactiva para
+   quien prefiera menos movimiento. */
+.pp-transicion-vista {
+    animation-duration: 420ms;
+    animation-timing-function: var(--ease-suave);
+    animation-fill-mode: both;
+}
+
+    .pp-transicion-vista--entrada {
+        animation-name: pp-vista-entrada;
+    }
+
+    .pp-transicion-vista--salida {
+        animation-name: pp-vista-salida;
+    }
+
+@keyframes pp-vista-entrada {
+    from {
+        opacity: 0;
+        transform: scale(1.015);
+        filter: blur(6px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+        filter: blur(0);
+    }
+}
+
+@keyframes pp-vista-salida {
+    from {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.97);
+        filter: blur(6px);
+    }
+}
+
+/* Revelado progresivo de secciones al hacer scroll (ver hook useEnPantalla).
+   La regla de prefers-reduced-motion de la sección 2 ya desactiva esta
+   transición para quien prefiera menos movimiento. */
+.pp-reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s var(--ease-suave), transform 0.7s var(--ease-suave);
+}
+
+    .pp-reveal.pp-reveal--visible {
+        opacity: 1;
+        transform: none;
+    }
+
+/* Espaciado estándar entre el encabezado de una sección y la cuadrícula
+   de tarjetas que le sigue (reemplaza estilos en línea repetidos). */
+.pp-seccion-grid {
+    margin-top: var(--space-5);
+}
+
+/* Realce de interacción opcional para tarjetas informativas del home. */
+.pp-card-hover {
+    transition: transform var(--ease-suave), box-shadow var(--ease-suave);
+}
+
+    .pp-card-hover:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-card-hover);
+    }
+
+.pp-topbar-logo {
+    height: 65px; /* antes 38px */
+    width: auto;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+/* Fila de botones de llamada a la acción del hero. */
+.pp-hero-cta {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+}
+
+.pp-hero-nota {
+    margin-top: var(--space-4);
+}
+
+/* Invitación animada a bajar hacia "Cómo funciona". */
+.pp-scroll-cue {
+    display: inline-flex;
+    margin-top: var(--space-6);
+    color: var(--color-ink-invertido);
+    opacity: 0.85;
+    animation: pp-bounce 2.2s ease-in-out infinite;
+    transition: color var(--transition), opacity var(--transition);
+}
+
+    .pp-scroll-cue:hover {
+        color: var(--color-gold);
+        opacity: 1;
+    }
+
+@keyframes pp-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+}
+
+/* Fila genérica "texto + acción al final", reutilizable en cualquier tarjeta
+   o banner que combine un mensaje con un botón de llamada a la acción. */
+.pp-fila-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-5);
+    flex-wrap: wrap;
+}
+
+    .pp-fila-cta > *:last-child {
+        flex-shrink: 0;
+    }
+
+@media (max-width: 640px) {
+    .pp-fila-cta {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
+}
+
+/* Indicador de progreso reutilizado a mitad de página (no superpuesto a un
+   hero): cancela el margen negativo y el ancho máximo pensados para ese caso. */
+.pp-progress-inline {
+    margin: var(--space-5) auto 0;
+    max-width: none;
+    padding: 0;
+}
+
+/* Banner final de llamada a la acción: más protagonismo que un banner-info
+   estándar, pensado para cerrar la página principal. */
+.pp-cta-final {
+    background: linear-gradient(135deg, var(--color-navy), var(--color-blue));
+    color: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6) var(--space-7);
+    box-shadow: var(--shadow-lg);
+    border-top: 3px solid var(--color-gold);
+}
+
+    .pp-cta-final h3 {
+        color: var(--color-white);
+    }
+
+    .pp-cta-final p {
+        margin: 0;
+        color: var(--color-ink-invertido);
+  }
+.confirmacion-denuncia__numero .help {
+    text-align: center;
+    margin-top: var(--space-2);
+}
+
+/* Estilos de disponibilidad de funcionarios (HU-007) movidos a:
+   src/pages/Institucional/GestionDisponibilidadFuncionario.css */
+
+
+/* ===== Portal interno: sidebar claro + barra superior azul ===== */
+.sidebar {
+    background: var(--color-white);
+    color: var(--color-navy);
+    border-right: 1px solid #dde2ec;
+}
+
+.sidebar-header {
+    background: var(--color-white);
+    border-bottom: 1px solid #e6e9f0;
+    padding: var(--space-3) var(--space-4);
+}
+
+.sidebar-logo {
+    /* Se adapta al alto de la ventana para que nunca se corte */
+    height: clamp(64px, 12vh, 96px);
+    max-width: 100%;
+}
+
+/* La cabecera y el pie conservan su alto y el pie queda siempre abajo; solo
+   el menu (nav) se desplaza si no cabe. */
+.sidebar-header,
+.sidebar-footer {
+    flex-shrink: 0;
+}
+
+.sidebar > nav {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.sidebar-menu {
+    padding: var(--space-2) 0;
+    overflow: visible;
+}
+
+.menu-group-label {
+    padding-top: var(--space-3);
+    padding-bottom: var(--space-1);
+}
+
+.menu-link {
+    padding-top: 11px;
+    padding-bottom: 11px;
+}
+
+.menu-label {
+    font-size: 14px;
+}
+
+/* Pantallas bajas (laptops): opciones algo mas compactas */
+@media (max-height: 760px) {
+    .menu-link {
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+}
+
+.menu-group-label {
+    color: #7a86a3;
+}
+
+.menu-link {
+    color: #3a4a75;
+}
+
+    .menu-link:hover {
+        background: #eaeef7;
+        color: var(--color-navy);
+    }
+
+.menu-item.active .menu-link {
+    background: #eaeef7;
+    color: var(--color-navy);
+    border-left-color: var(--color-gold);
+}
+
+.sidebar-footer {
+    border-top: 1px solid #e6e9f0;
+}
+
+.usuario-nombre {
+    color: var(--color-navy);
+}
+
+.usuario-rol {
+    color: #3a4a75;
+}
+
+.btn-logout {
+    background: var(--color-navy);
+    border-color: var(--color-navy);
+    color: var(--color-white);
+}
+
+.btn-sidebar-cerrar {
+    color: var(--color-ink-muted);
+}
+
+    .btn-sidebar-cerrar:hover {
+        color: var(--color-navy);
+    }
+
+/* Barra superior azul con filo dorado */
+.topbar-interna {
+    background: var(--color-gray); 
+    border-bottom: 3px solid var(--color-gold);
+}
+
+    .topbar-interna .breadcrumbs,
+    .topbar-interna .breadcrumbs a,
+    .topbar-interna .breadcrumbs .actual {
+        color: var(--color-navy);
+    }
+
+/* Fondo del contenido: azul grisáceo suave para que las tarjetas blancas resalten */
+.content-wrap {
+    background: #eef1f6;
+}
+.topbar-interna {
+    background: var(--color-white);
+    border-bottom: 3px solid var(--color-gold);
+}
+
+/* Centro: gris */
+.content-wrap {
+    background: #e6e9ed;
+}
+
+/* Footer: blanco, con filo dorado arriba y texto oscuro */
+.footer-institucional {
+    background: var(--color-white);
+    color: var(--color-navy);
+    border-top: 3px solid var(--color-gold);
+}
+
+    .footer-institucional a {
+        color: var(--color-blue-medium);
+    }
+@media (max-width: 600px) {
+    .page-asignacion-manual .nota-auto {
+        text-align: left;
+        max-width: none;
+    }
+}
+
+/* Seccion de acceso institucional del portal publico (HU-001). Invita al
+   funcionario a iniciar sesion para entrar al portal interno. */
+.pp-acceso-institucional__tarjeta {
+    border: 1px solid var(--color-gray-soft);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
+    background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-blue) 70%);
+    color: var(--color-white);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.pp-acceso-institucional__tarjeta h2 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: var(--fs-h2);
+    font-weight: 700;
+    color: var(--color-white);
+}
+
+.pp-acceso-institucional__tarjeta p {
+    max-width: 640px;
+    margin: 0;
+    color: var(--color-ink-invertido);
+    font-size: var(--fs-body);
+    line-height: 1.5;
+}
+
+.pp-acceso-institucional__tarjeta .btn-primary {
+    margin-top: var(--space-2);
+    background: var(--color-gold);
+    color: var(--color-navy);
+}
+
+/* ===== Menu lateral reducible (escritorio) =====
+   Se reduce a iconos para dar ancho a vistas de trabajo (p. ej. bitacora). */
+.btn-sidebar-colapsar {
+    display: none;
+}
+
+.logout-icono {
+    display: none;
+}
+
+@media (min-width: 901px) {
+    .sidebar {
+        transition: width .25s ease;
+    }
+
+    /* Sobre la linea que divide el menu del contenido: mitad dentro, mitad
+       fuera, a media altura del panel. */
+    .btn-sidebar-colapsar {
+        position: absolute;
+        top: 50%;
+        right: -12px;
+        transform: translateY(-50%);
+        z-index: 2;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        padding: 0;
+        background: var(--color-gold);
+        border: 1px solid var(--color-gold);
+        border-radius: 50%;
+        color: var(--color-navy);
+        cursor: pointer;
+        box-shadow: var(--shadow-sm);
+        transition: background var(--transition), box-shadow var(--transition);
+    }
+
+    .btn-sidebar-colapsar:hover {
+        background: var(--color-gold-hover, #b8944f);
+        border-color: var(--color-gold-hover, #b8944f);
+        box-shadow: var(--shadow-md);
+    }
+
+    .btn-sidebar-colapsar:focus-visible {
+        outline: 2px solid var(--color-navy);
+        outline-offset: 2px;
+    }
+
+    .sidebar--colapsado {
+        width: 76px;
+    }
+
+    /* Con el menu reducido el boton vuelve a ser el cuadrado dorado de arriba,
+       centrado en la cabecera de la barra. */
+    .sidebar--colapsado .btn-sidebar-colapsar {
+        top: 15px;
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 34px;
+        height: 34px;
+        border-radius: var(--radius-sm);
+    }
+
+    .sidebar--colapsado .btn-sidebar-colapsar svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .sidebar--colapsado .sidebar-header {
+        justify-content: center;
+        padding: var(--space-3) 0;
+        min-height: 64px;
+    }
+
+    .sidebar--colapsado .sidebar-logo,
+    .sidebar--colapsado .menu-label,
+    .sidebar--colapsado .usuario-info,
+    .sidebar--colapsado .logout-texto {
+        display: none;
+    }
+
+    .sidebar--colapsado .menu-group-label {
+        height: 1px;
+        margin: var(--space-3) var(--space-4);
+        padding: 0;
+        overflow: hidden;
+        font-size: 0;
+        background: #e6e9f0;
+    }
+
+    .sidebar--colapsado .menu-link {
+        justify-content: center;
+        padding: 12px 0;
+    }
+
+    .sidebar--colapsado .usuario-card {
+        justify-content: center;
+        margin-bottom: var(--space-3);
+    }
+
+    .sidebar--colapsado .sidebar-footer {
+        padding: var(--space-3) var(--space-2);
+    }
+
+    .sidebar--colapsado .logout-icono {
+        display: inline;
+        font-size: 16px;
+    }
+}
+
+/* ==========================================================================
+   Guía visual flotante para el menú lateral colapsado (Portal Institucional)
+   Muestra el apartado a seleccionar de forma clara y con el diseño del sistema.
+   ========================================================================== */
+.sidebar-guia-visual {
+    position: fixed;
+    z-index: calc(var(--z-panel) + 60);
+    display: inline-flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 8px 14px;
+    background: var(--color-white);
+    color: var(--color-navy);
+    border: 1px solid #dde2ec;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 6px 22px rgba(2, 26, 83, 0.14), 0 2px 6px rgba(0, 0, 0, 0.06);
+    pointer-events: none;
+    transform: translateY(-50%);
+    animation: guiaVisualEntrada 0.15s cubic-bezier(0, 0, 0.2, 1) forwards;
+    white-space: nowrap;
+    user-select: none;
+}
+
+@keyframes guiaVisualEntrada {
+    from {
+        opacity: 0;
+        transform: translateY(-50%) translateX(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+    }
+}
+
+.sidebar-guia-visual__flecha {
+    position: absolute;
+    top: 50%;
+    left: -6px;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-right: 6px solid var(--color-white);
+}
+
+.sidebar-guia-visual__flecha::before {
+    content: '';
+    position: absolute;
+    top: -7px;
+    left: -1px;
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-right: 7px solid #dde2ec;
+    z-index: -1;
+}
+
+.sidebar-guia-visual__categoria {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.9px;
+    color: var(--color-amber, #8a6a1f);
+    line-height: 1.2;
+}
+
+.sidebar-guia-visual__titulo-fila {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sidebar-guia-visual__titulo {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--color-navy);
+    letter-spacing: 0.2px;
+    line-height: 1.3;
+}
+
+.sidebar-guia-visual__badge {
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 1px 7px;
+    border-radius: var(--radius-pill);
+    background: var(--color-amber-soft, #fbeed9);
+    color: var(--color-amber, #8a6a1f);
+    border: 1px solid rgba(138, 106, 31, 0.25);
+    line-height: 1.2;
+}
+
+.sidebar-guia-visual__badge--activo {
+    background: #eaeef7;
+    color: var(--color-navy);
+    border-color: #cfd9ed;
+}
+
+
+/* ==========================================================================
+   Movil: las tablas con la clase .tabla-tarjetas se muestran como tarjetas
+   verticales (una por fila, cada dato con su etiqueta) para no tener que
+   deslizar horizontalmente. Cada <td> lleva data-label; data-label=""
+   (acciones) no muestra etiqueta. Se usa !important porque cada pagina define
+   sus propios min-width/display/padding de tabla.
+   ========================================================================== */
+@media (max-width: 760px) {
+    .tabla-tarjetas {
+        display: block !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        border: 0 !important;
+    }
+
+    .tabla-tarjetas thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+    }
+
+    .tabla-tarjetas tbody {
+        display: block !important;
+    }
+
+    .tabla-tarjetas tbody tr {
+        display: block !important;
+        margin: 12px;
+        padding: 4px 14px;
+        background: var(--color-white);
+        border: 1px solid #dde2ec;
+        border-radius: 8px;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .tabla-tarjetas tbody td {
+        display: block !important;
+        width: auto !important;
+        padding: 9px 0 !important;
+        border: 0 !important;
+        border-bottom: 1px solid #eef0f4 !important;
+        text-align: left !important;
+        white-space: normal !important;
+    }
+
+    .tabla-tarjetas tbody td:last-child {
+        border-bottom: 0 !important;
+    }
+
+    .tabla-tarjetas tbody td::before {
+        content: attr(data-label);
+        display: block;
+        margin-bottom: 3px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: .05em;
+        text-transform: uppercase;
+        color: #164687;
+    }
+
+    .tabla-tarjetas tbody td[data-label=""]::before {
+        display: none;
+    }
+
+    /* Filas de mensaje ("No hay ...") sin etiqueta */
+    .tabla-tarjetas tbody td:not([data-label])::before {
+        display: none;
+    }
+
+    /* Separador de dia del historial administrativo */
+    .tabla-tarjetas tbody tr.gu-dia {
+        padding: 0;
+        margin: 14px 12px 0;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+    }
+
+    .tabla-tarjetas tbody tr.gu-dia th {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 4px 2px;
+        text-align: left;
+    }
+
+    /* Controles de las celdas a todo el ancho de la tarjeta */
+    .tabla-tarjetas .btn-selector-validador,
+    .tabla-tarjetas .btn-selector-encargado {
+        width: 100%;
+        max-width: none;
+    }
+
+    .tabla-tarjetas .celda-acciones,
+    .tabla-tarjetas .gu-acciones {
+        flex-wrap: wrap;
+    }
+
+    /* Contenedores de tabla: sin scroll horizontal */
+    .table-wrap,
+    .page-gestion-usuarios .gu-tabla-wrap {
+        overflow-x: visible !important;
+        background: transparent;
+        border-top: 0;
+        box-shadow: none;
+    }
+}
+
+/* El historial de Disponibilidad se ocultaba en movil (.denuncias-table-wrap):
+   se muestra como tarjetas. */
+@media (max-width: 600px) {
+    .denuncias-table-wrap.disp-tabla-wrap {
+        display: block;
+    }
+}
+
+/* ==========================================================================
+   Botón institucional para ordenar listados por fecha (ascendente / descendente)
+   Se ubica a la par de los controles de búsqueda.
+   ========================================================================== */
+.btn-orden-fecha {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    height: 35px;
+    padding: 0 12px;
+    background: var(--color-white);
+    color: var(--color-navy);
+    border: 1px solid #c1c5c8;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
+    flex-shrink: 0;
+}
+
+.btn-orden-fecha:hover {
+    background: #eaeef7;
+    border-color: var(--color-navy);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-orden-fecha:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+}
+
+.btn-orden-fecha__icono {
+    color: var(--color-navy);
+    flex-shrink: 0;
+}
+
+.btn-orden-fecha__texto {
+    line-height: 1;
+}
+
+.btn-orden-fecha__flecha {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #eaeef7;
+    color: var(--color-navy);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.th-ordenable {
+    cursor: pointer;
+    user-select: none;
+    transition: color var(--transition);
+}
+
+.th-ordenable:hover {
+    color: var(--color-navy);
+}
+

@@ -1,0 +1,83 @@
+codigo_area,nombre,tipo,region
+ACOS,A.R.S Acosta,ARS,Central Sur
+ALTA,A.R.S Alajuelita,ARS,Central Sur
+ASER,A.R.S Aserrí,ARS,Central Sur
+CMU,A.R.S Carmen-Merced-Uruca,ARS,Central Sur
+CORO,A.R.S Coronado,ARS,Central Sur
+CURR,A.R.S Curridabat,ARS,Central Sur
+DESA,A.R.S Desamparados,ARS,Central Sur
+ESCA,A.R.S Escazú,ARS,Central Sur
+GOIC,A.R.S Goicoechea,ARS,Central Sur
+HATI,A.R.S Hatillo,ARS,Central Sur
+HMR,A.R.S Hospital Mata Redonda,ARS,Central Sur
+MOCA,A.R.S Montes de Oca,ARS,Central Sur
+MORA,A.R.S Mora,ARS,Central Sur
+MORV,A.R.S Moravia,ARS,Central Sur
+PAVA,A.R.S Pavas,ARS,Central Sur
+PURI,A.R.S Puriscal Turrubares,ARS,Central Sur
+SANA,A.R.S Santa Ana,ARS,Central Sur
+SURE,A.R.S Sureste Metropolitana,ARS,Central Sur
+TIBA,A.R.S Tibás,ARS,Central Sur
+ALA1,A.R.S Alajuela 1,ARS,Central Norte
+ALA2,A.R.S Alajuela 2,ARS,Central Norte
+ATEN,A.R.S Atenas,ARS,Central Norte
+BARV,A.R.S Barva - San Rafael,ARS,Central Norte
+BELF,A.R.S Belén - Flores,ARS,Central Norte
+GREC,A.R.S Grecia,ARS,Central Norte
+HERE,A.R.S Heredia,ARS,Central Norte
+POAS,A.R.S Poás,ARS,Central Norte
+SPSI,A.R.S San Pablo - San Isidro,ARS,Central Norte
+SBAR,A.R.S Santa Bárbara,ARS,Central Norte
+SDOM,A.R.S Santo Domingo,ARS,Central Norte
+SARA,A.R.S Sarapiquí,ARS,Central Norte
+CART,A.R.S Cartago,ARS,Central Este
+LUNION,A.R.S La Unión,ARS,Central Este
+LSAN,A.R.S Los Santos,ARS,Central Este
+OREA,A.R.S Oreamuno,ARS,Central Este
+PARA,A.R.S Paraíso,ARS,Central Este
+TEJAR,A.R.S Tejar del Guarco,ARS,Central Este
+TURR,A.R.S Turrialba,ARS,Central Este
+NARA,A.R.S Naranjo,ARS,Central Occidente
+PALM,A.R.S Palmares,ARS,Central Occidente
+SRAM,A.R.S San Ramón,ARS,Central Occidente
+VVEG,A.R.S Valverde Vega,ARS,Central Occidente
+ZARC,A.R.S Zarcero,ARS,Central Occidente
+GUAC,A.R.S Guácimo,ARS,Huetar Caribe
+LIMO,A.R.S Limón,ARS,Huetar Caribe
+MATI,A.R.S Matina,ARS,Huetar Caribe
+POCO,A.R.S Pococí,ARS,Huetar Caribe
+SIQU,A.R.S Siquirres,ARS,Huetar Caribe
+TALA,A.R.S Talamanca,ARS,Huetar Caribe
+BAIR,A.R.S Buenos Aires,ARS,Brunca
+CORR,A.R.S Corredores,ARS,Brunca
+CBRU,A.R.S Coto Brus,ARS,Brunca
+GOLF,A.R.S Golfito,ARS,Brunca
+OSA,A.R.S Osa,ARS,Brunca
+PZEL,A.R.S Pérez Zeledón,ARS,Brunca
+ABAN,A.R.S Abangares,ARS,Chorotega
+BAGA,A.R.S Bagaces,ARS,Chorotega
+CANA,A.R.S Cañas,ARS,Chorotega
+CARR,A.R.S Carrillo,ARS,Chorotega
+HOJA,A.R.S Hojancha,ARS,Chorotega
+LCRU,A.R.S La Cruz,ARS,Chorotega
+LIBE,A.R.S Liberia,ARS,Chorotega
+NAND,A.R.S Nandayure,ARS,Chorotega
+NICO,A.R.S Nicoya,ARS,Chorotega
+SCRU,A.R.S Santa Cruz,ARS,Chorotega
+TILA,A.R.S Tilarán,ARS,Chorotega
+UPAL,A.R.S Upala,ARS,Chorotega
+AZAR,A.R.S Aguas Zarcas,ARS,Huetar Norte
+CQUE,A.R.S Ciudad Quesada,ARS,Huetar Norte
+FLOR,A.R.S Florencia,ARS,Huetar Norte
+GUAT,A.R.S Guatuso,ARS,Huetar Norte
+LCHI,A.R.S Los Chiles,ARS,Huetar Norte
+SRPO,A.R.S Santa Rosa Pocosol,ARS,Huetar Norte
+BARR,A.R.S Barranca,ARS,Pacífico Central
+ESPA,A.R.S Esparza,ARS,Pacífico Central
+GARA,A.R.S Garabito,ARS,Pacífico Central
+MORO,A.R.S Montes de Oro,ARS,Pacífico Central
+OROT,A.R.S Orotina San Mateo,ARS,Pacífico Central
+PARR,A.R.S Parrita,ARS,Pacífico Central
+PENI,A.R.S Peninsular,ARS,Pacífico Central
+PUNT,A.R.S Puntarenas - Chacarita,ARS,Pacífico Central
+QUEP,A.R.S Quepos,ARS,Pacífico Central

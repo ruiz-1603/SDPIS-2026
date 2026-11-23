@@ -1,0 +1,316 @@
+/* Selector con busqueda en ventana modal (componente comun). Mismo estilo
+   que "Seleccionar validador" de Asignaciones. Paleta institucional:
+   azul oscuro #021A53, azul #164687, dorado #CFAC65, gris #C1C5C8. */
+
+/* ---------- Boton que abre la ventana ---------- */
+.sb-boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    min-width: 200px;
+    padding: 9px 14px;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+    text-align: left;
+    color: #164687;
+    background: #FFFFFF;
+    border: 1px solid #C1C5C8;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+    .sb-boton:hover:not(:disabled) {
+        border-color: #164687;
+    }
+
+    .sb-boton:focus-visible {
+        outline: none;
+        border-color: #164687;
+        box-shadow: 0 0 0 3px rgba(22, 70, 135, .15);
+    }
+
+.sb-boton--elegido {
+    color: #021A53;
+    font-weight: 700;
+}
+
+.sb-boton:disabled {
+    background: #EEF0F2;
+    color: #7C8794;
+    cursor: not-allowed;
+}
+
+.sb-boton__texto {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sb-boton svg {
+    flex-shrink: 0;
+    color: #164687;
+}
+
+/* ---------- Ventana ---------- */
+.sb-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-modal, 300);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: rgba(2, 26, 83, .5);
+}
+
+.sb-modal {
+    width: 100%;
+    max-width: 600px;
+    max-height: calc(100vh - 32px);
+    display: flex;
+    flex-direction: column;
+    padding: 28px 32px 24px;
+    background: #FFFFFF;
+    border-top: 4px solid #CFAC65;
+    border-radius: 6px;
+    box-shadow: 0 12px 32px rgba(2, 26, 83, .22);
+    color: #021A53;
+    font-family: var(--font-body, 'Inter', Arial, sans-serif);
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.sb-modal__titulo {
+    margin: 0 0 20px;
+    font-family: inherit;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #021A53;
+}
+
+.sb-modal__buscar {
+    position: relative;
+    border-bottom: 1px solid #C1C5C8;
+}
+
+    .sb-modal__buscar:focus-within {
+        border-bottom-color: #002E7A;
+    }
+
+    .sb-modal__buscar svg {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #8C95A3;
+    }
+
+    .sb-modal .sb-modal__buscar input[type='text'] {
+        width: 100%;
+        padding: 10px 8px 10px 36px;
+        font: inherit;
+        font-size: 13.5px;
+        font-style: italic;
+        border: none;
+        background: transparent;
+        color: var(--color-ink);
+    }
+
+        .sb-modal .sb-modal__buscar input[type='text']:focus {
+            outline: none;
+        }
+
+.sb-modal__resultado {
+    margin: 10px 0 12px;
+    font-size: 13px;
+    color: #5B6479;
+}
+
+.sb-modal__lista {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    border: 1px solid #C1C5C8;
+    border-radius: 4px;
+}
+
+/* Carpeta (grupo) expandible/contraible. */
+.sb-grupo {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: #EEF2FA;
+    border-bottom: 1px solid #E1E4E8;
+}
+
+.sb-grupo__boton {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 12px 18px;
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    color: #164687;
+    text-align: left;
+    cursor: pointer;
+}
+
+    .sb-grupo__boton:hover {
+        background: #E2E9F6;
+    }
+
+    .sb-grupo__boton:focus-visible {
+        outline: none;
+        box-shadow: inset 0 0 0 2px rgba(22, 70, 135, .35);
+    }
+
+.sb-grupo__carpeta {
+    flex-shrink: 0;
+    color: #CFAC65;
+}
+
+.sb-grupo__nombre {
+    flex: 1;
+}
+
+.sb-grupo__cuenta {
+    min-width: 24px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: #fff;
+    font-size: 12px;
+    text-align: center;
+    color: #164687;
+}
+
+.sb-grupo__flecha {
+    flex-shrink: 0;
+    transform: rotate(-90deg);
+    transition: transform .15s ease;
+}
+
+.sb-grupo__flecha--abierta {
+    transform: rotate(0deg);
+}
+
+.sb-opcion.sb-opcion--en-carpeta {
+    padding-left: 44px;
+}
+
+.sb-opcion {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 18px;
+    border-bottom: 1px solid #E1E4E8;
+    font-size: 15px;
+    font-weight: 700;
+    color: #021A53;
+    cursor: pointer;
+    transition: background-color .15s ease;
+}
+
+    .sb-opcion:last-child {
+        border-bottom: none;
+    }
+
+.sb-opcion--activa {
+    background: #EEF2F9;
+}
+
+.sb-opcion--elegida {
+    background: #FBF7EE;
+    box-shadow: inset 3px 0 0 #CFAC65;
+}
+
+    .sb-opcion--elegida.sb-opcion--activa {
+        background: #F6EEDC;
+    }
+
+.sb-opcion--todos {
+    font-weight: 400;
+    color: #164687;
+}
+
+.sb-opcion__texto {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Etiqueta a la derecha (como "Carga: 0" en Asignaciones). */
+.sb-opcion__detalle {
+    flex-shrink: 0;
+    padding: 3px 12px;
+    border-radius: 999px;
+    background: #EEF2F9;
+    font-size: 13px;
+    font-weight: 400;
+    color: #164687;
+    white-space: nowrap;
+}
+
+.sb-opcion__check {
+    flex-shrink: 0;
+    color: #164687;
+}
+
+.sb-modal__vacio {
+    padding: 18px;
+    font-style: italic;
+    color: #5B6479;
+}
+
+.sb-modal__pie {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 24px;
+}
+
+.sb-modal__cerrar {
+    padding: 10px 22px;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    color: #021A53;
+    background: #FFFFFF;
+    border: 1px solid #C1C5C8;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    .sb-modal__cerrar:hover {
+        border-color: #164687;
+        color: #164687;
+    }
+
+    .sb-modal__cerrar:focus-visible {
+        outline: 2px solid #164687;
+        outline-offset: 2px;
+    }
+
+@media (max-width: 600px) {
+    .sb-modal {
+        padding: 22px 18px 18px;
+    }
+
+    .sb-modal__titulo {
+        font-size: 20px;
+    }
+}
+
+/* Selector usado dentro de un modal propio de la pagina (z-index 1000). */
+.sb-overlay--sobre-modal {
+    z-index: 1100;
+}
